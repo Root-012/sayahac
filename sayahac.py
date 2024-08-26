@@ -163,8 +163,8 @@ class sayahac:
         clearScr()
         self.createFolders()
         print (fsocietylogo + color.RED + '''
-       }--------------{+} Coded By Manisso {+}--------------{
-       }--------{+}  GitHub.com/Manisso/fsociety {+}--------{
+       }--------------{+} Coded By Root-012 {+}--------------{
+       }--------{+}  GitHub.com/Root-012/sayahac {+}--------{
     ''' + color.END + '''
        {1}--Information Gathering
        {2}--Password Attacks
