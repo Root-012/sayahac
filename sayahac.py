@@ -116,7 +116,7 @@ alreadyInstalled = "Already Installed"
 continuePrompt = "\nClick [Return] to continue"
 
 termsAndConditions = color.NOTICE + '''
-I shall not use fsociety to:
+I shall not use sayahac to:
 (i) upload or otherwise transmit, display or distribute any
 content that infringes any trademark, trade secret, copyright
 or other proprietary or intellectual property rights of any
@@ -216,12 +216,19 @@ class sayahac:
     def githubContributors(self):
         clearScr()
         print('''
-     dP""b8  dP"Yb  88b 88 888888 88""Yb 88 88""Yb .dP"Y8
-    dP   `" dP   Yb 88Yb88   88   88__dP 88 88__dP `Ybo."     
-    Yb      Yb   dP 88 Y88   88   88"Yb  88 88""Yb o.`Y8b
-     YboodP  YbodP  88  Y8   88   88  Yb 88 88oodP 8bodP'
+     
+ _______  _______  _       _________ _______ _________ ______           _________ _______  _______  _______ 
+(  ____ \(  ___  )( (    /|\__   __/(  ____ )\__   __/(  ___ \ |\     /|\__   __/(  ___  )(  ____ )(  ____ \
+| (    \/| (   ) ||  \  ( |   ) (   | (    )|   ) (   | (   ) )| )   ( |   ) (   | (   ) || (    )|| (    \/
+| |      | |   | ||   \ | |   | |   | (____)|   | |   | (__/ / | |   | |   | |   | |   | || (____)|| (_____ 
+| |      | |   | || (\ \) |   | |   |     __)   | |   |  __ (  | |   | |   | |   | |   | ||     __)(_____  )
+| |      | |   | || | \   |   | |   | (\ (      | |   | (  \ \ | |   | |   | |   | |   | || (\ (         ) |
+| (____/\| (___) || )  \  |   | |   | ) \ \_____) (___| )___) )| (___) |   | |   | (___) || ) \ \__/\____) |
+(_______/(_______)|/    )_)   )_(   |/   \__/\_______/|/ \___/ (_______)   )_(   (_______)|/   \__/\_______)
+                                                                                                            
+
      ''')
-        contributorsURL = 'https://api.github.com/repos/manisso/fsociety/contributors'
+        contributorsURL = 'https://github.com/Root-012/sayahac.git'
         jsonResponseList = json.loads(urllib2.urlopen(contributorsURL).read())
         for dictionary in jsonResponseList:
             print("   * %s" % dictionary['login'])
@@ -238,17 +245,40 @@ class sayahac:
         self.__init__()
 
     def update(self):
-        os.system("git clone --depth=1 https://github.com/Manisso/fsociety.git")
+        os.system("git clone --depth=1 https://github.com/Root-012/sayahac.git")
         os.system("cd fsociety && bash ./update.sh")
         os.system("sayahac")
 
 
 class sniffingSpoofingMenu:
     menuLogo = '''
-    .dP"Y8 88b 88 88 888888 888888 88 88b 88  dP""b8
-    `Ybo." 88Yb88 88 88__   88__   88 88Yb88 dP   `"
-    o.`Y8b 88 Y88 88 88""   88""   88 88 Y88 Yb  "88
-    8bodP' 88  Y8 88 88     88     88 88  Y8  YboodP
+    
+                                                                                                                                 
+                                                                                                                                 
+                                     iiii     ffffffffffffffff    ffffffffffffffff    iiii                                       
+                                    i::::i   f::::::::::::::::f  f::::::::::::::::f  i::::i                                      
+                                     iiii   f::::::::::::::::::ff::::::::::::::::::f  iiii                                       
+                                            f::::::fffffff:::::ff::::::fffffff:::::f                                             
+    ssssssssss   nnnn  nnnnnnnn    iiiiiii  f:::::f       fffffff:::::f       ffffffiiiiiiinnnn  nnnnnnnn       ggggggggg   ggggg
+  ss::::::::::s  n:::nn::::::::nn  i:::::i  f:::::f             f:::::f             i:::::in:::nn::::::::nn    g:::::::::ggg::::g
+ss:::::::::::::s n::::::::::::::nn  i::::i f:::::::ffffff      f:::::::ffffff        i::::in::::::::::::::nn  g:::::::::::::::::g
+s::::::ssss:::::snn:::::::::::::::n i::::i f::::::::::::f      f::::::::::::f        i::::inn:::::::::::::::ng::::::ggggg::::::gg
+ s:::::s  ssssss   n:::::nnnn:::::n i::::i f::::::::::::f      f::::::::::::f        i::::i  n:::::nnnn:::::ng:::::g     g:::::g 
+   s::::::s        n::::n    n::::n i::::i f:::::::ffffff      f:::::::ffffff        i::::i  n::::n    n::::ng:::::g     g:::::g 
+      s::::::s     n::::n    n::::n i::::i  f:::::f             f:::::f              i::::i  n::::n    n::::ng:::::g     g:::::g 
+ssssss   s:::::s   n::::n    n::::n i::::i  f:::::f             f:::::f              i::::i  n::::n    n::::ng::::::g    g:::::g 
+s:::::ssss::::::s  n::::n    n::::ni::::::if:::::::f           f:::::::f            i::::::i n::::n    n::::ng:::::::ggggg:::::g 
+s::::::::::::::s   n::::n    n::::ni::::::if:::::::f           f:::::::f            i::::::i n::::n    n::::n g::::::::::::::::g 
+ s:::::::::::ss    n::::n    n::::ni::::::if:::::::f           f:::::::f            i::::::i n::::n    n::::n  gg::::::::::::::g 
+  sssssssssss      nnnnnn    nnnnnniiiiiiiifffffffff           fffffffff            iiiiiiii nnnnnn    nnnnnn    gggggggg::::::g 
+                                                                                                                         g:::::g 
+                                                                                                             gggggg      g:::::g 
+                                                                                                             g:::::gg   gg:::::g 
+                                                                                                              g::::::ggg:::::::g 
+                                                                                                               gg:::::::::::::g  
+                                                                                                                 ggg::::::ggg    
+                                                                                                                    gggggg       
+
     '''
 
     def __init__(self):
@@ -272,7 +302,7 @@ class sniffingSpoofingMenu:
         elif choice6 == "4":
             smtpsend()
         elif choice6 == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -284,10 +314,33 @@ class sniffingSpoofingMenu:
 
 class webHackingMenu:
     menuLogo = '''
-    Yb        dP 888888 88""Yb
-     Yb  db  dP  88__   88__dP
-      YbdPYbdP   88""   88""Yb
-       YP  YP    888888 88oodP
+    
+                                                                             
+                                                         bbbbbbbb            
+                                                         b::::::b            
+                                                         b::::::b            
+                                                         b::::::b            
+                                                          b:::::b            
+wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb    
+ w:::::w         w:::::w         w:::::wee::::::::::::ee  b::::::::::::::bb  
+  w:::::w       w:::::::w       w:::::we::::::eeeee:::::eeb::::::::::::::::b 
+   w:::::w     w:::::::::w     w:::::we::::::e     e:::::eb:::::bbbbb:::::::b
+    w:::::w   w:::::w:::::w   w:::::w e:::::::eeeee::::::eb:::::b    b::::::b
+     w:::::w w:::::w w:::::w w:::::w  e:::::::::::::::::e b:::::b     b:::::b
+      w:::::w:::::w   w:::::w:::::w   e::::::eeeeeeeeeee  b:::::b     b:::::b
+       w:::::::::w     w:::::::::w    e:::::::e           b:::::b     b:::::b
+        w:::::::w       w:::::::w     e::::::::e          b:::::bbbbbb::::::b
+         w:::::w         w:::::w       e::::::::eeeeeeee  b::::::::::::::::b 
+          w:::w           w:::w         ee:::::::::::::e  b:::::::::::::::b  
+           www             www            eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   
+                                                                             
+                                                                             
+                                                                             
+                                                                             
+                                                                             
+                                                                             
+                                                                             
+
     '''
 
     def __init__(self):
@@ -334,7 +387,7 @@ class webHackingMenu:
         elif choiceweb == "12":
             arachni()
         elif choiceweb == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -346,10 +399,33 @@ class webHackingMenu:
 
 class privateWebHacking:
     menuLogo = '''
-    88""Yb 88""Yb 88 Yb    dP    db    888888 888888
-    88__dP 88__dP 88  Yb  dP    dPYb     88   88__
-    88"""  88"Yb  88   YbdP    dP__Yb    88   88""
-    88     88  Yb 88    YP    dP""""Yb   88   888888
+    
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                           bbbbbbbb            
+PPPPPPPPPPPPPPPPP                        iiii                                                  tttt                                                                                                        b::::::b            
+P::::::::::::::::P                      i::::i                                              ttt:::t                                                                                                        b::::::b            
+P::::::PPPPPP:::::P                      iiii                                               t:::::t                                                                                                        b::::::b            
+PP:::::P     P:::::P                                                                        t:::::t                                                                                                         b:::::b            
+  P::::P     P:::::Prrrrr   rrrrrrrrr  iiiiiiivvvvvvv           vvvvvvvaaaaaaaaaaaaa  ttttttt:::::ttttttt        eeeeeeeeeeee                     wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb    
+  P::::P     P:::::Pr::::rrr:::::::::r i:::::i v:::::v         v:::::v a::::::::::::a t:::::::::::::::::t      ee::::::::::::ee                    w:::::w         w:::::w         w:::::wee::::::::::::ee  b::::::::::::::bb  
+  P::::PPPPPP:::::P r:::::::::::::::::r i::::i  v:::::v       v:::::v  aaaaaaaaa:::::at:::::::::::::::::t     e::::::eeeee:::::ee                   w:::::w       w:::::::w       w:::::we::::::eeeee:::::eeb::::::::::::::::b 
+  P:::::::::::::PP  rr::::::rrrrr::::::ri::::i   v:::::v     v:::::v            a::::atttttt:::::::tttttt    e::::::e     e:::::e ---------------    w:::::w     w:::::::::w     w:::::we::::::e     e:::::eb:::::bbbbb:::::::b
+  P::::PPPPPPPPP     r:::::r     r:::::ri::::i    v:::::v   v:::::v      aaaaaaa:::::a      t:::::t          e:::::::eeeee::::::e -:::::::::::::-     w:::::w   w:::::w:::::w   w:::::w e:::::::eeeee::::::eb:::::b    b::::::b
+  P::::P             r:::::r     rrrrrrri::::i     v:::::v v:::::v     aa::::::::::::a      t:::::t          e:::::::::::::::::e  ---------------      w:::::w w:::::w w:::::w w:::::w  e:::::::::::::::::e b:::::b     b:::::b
+  P::::P             r:::::r            i::::i      v:::::v:::::v     a::::aaaa::::::a      t:::::t          e::::::eeeeeeeeeee                         w:::::w:::::w   w:::::w:::::w   e::::::eeeeeeeeeee  b:::::b     b:::::b
+  P::::P             r:::::r            i::::i       v:::::::::v     a::::a    a:::::a      t:::::t    tttttte:::::::e                                   w:::::::::w     w:::::::::w    e:::::::e           b:::::b     b:::::b
+PP::::::PP           r:::::r           i::::::i       v:::::::v      a::::a    a:::::a      t::::::tttt:::::te::::::::e                                   w:::::::w       w:::::::w     e::::::::e          b:::::bbbbbb::::::b
+P::::::::P           r:::::r           i::::::i        v:::::v       a:::::aaaa::::::a      tt::::::::::::::t e::::::::eeeeeeee                            w:::::w         w:::::w       e::::::::eeeeeeee  b::::::::::::::::b 
+P::::::::P           r:::::r           i::::::i         v:::v         a::::::::::aa:::a       tt:::::::::::tt  ee:::::::::::::e                             w:::w           w:::w         ee:::::::::::::e  b:::::::::::::::b  
+PPPPPPPPPP           rrrrrrr           iiiiiiii          vvv           aaaaaaaaaa  aaaa         ttttttttttt      eeeeeeeeeeeeee                              www             www            eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+                                                                                                                                                                                                                               
+
     '''
 
     def __init__(self):
@@ -366,10 +442,33 @@ class privateWebHacking:
 
 class postExploitationMenu:
     menuLogo = '''
-    88""Yb  dP"Yb  .dP"Y8 888888
-    88__dP dP   Yb `Ybo."   88
-    88"""  Yb   dP o.`Y8b   88
-    88      YbodP  8bodP'   88
+    
+                                                                                                                                                                                                                  
+                                                                                                                                                                                                                  
+PPPPPPPPPPPPPPPPP                                             tttt                           EEEEEEEEEEEEEEEEEEEEEE                                        lllllll                    iiii          tttt          
+P::::::::::::::::P                                         ttt:::t                           E::::::::::::::::::::E                                        l:::::l                   i::::i      ttt:::t          
+P::::::PPPPPP:::::P                                        t:::::t                           E::::::::::::::::::::E                                        l:::::l                    iiii       t:::::t          
+PP:::::P     P:::::P                                       t:::::t                           EE::::::EEEEEEEEE::::E                                        l:::::l                               t:::::t          
+  P::::P     P:::::P  ooooooooooo       ssssssssss   ttttttt:::::ttttttt                       E:::::E       EEEEEExxxxxxx      xxxxxxxppppp   ppppppppp    l::::l    ooooooooooo   iiiiiiittttttt:::::ttttttt    
+  P::::P     P:::::Poo:::::::::::oo   ss::::::::::s  t:::::::::::::::::t                       E:::::E              x:::::x    x:::::x p::::ppp:::::::::p   l::::l  oo:::::::::::oo i:::::it:::::::::::::::::t    
+  P::::PPPPPP:::::Po:::::::::::::::oss:::::::::::::s t:::::::::::::::::t                       E::::::EEEEEEEEEE     x:::::x  x:::::x  p:::::::::::::::::p  l::::l o:::::::::::::::o i::::it:::::::::::::::::t    
+  P:::::::::::::PP o:::::ooooo:::::os::::::ssss:::::stttttt:::::::tttttt     ---------------   E:::::::::::::::E      x:::::xx:::::x   pp::::::ppppp::::::p l::::l o:::::ooooo:::::o i::::itttttt:::::::tttttt    
+  P::::PPPPPPPPP   o::::o     o::::o s:::::s  ssssss       t:::::t           -:::::::::::::-   E:::::::::::::::E       x::::::::::x     p:::::p     p:::::p l::::l o::::o     o::::o i::::i      t:::::t          
+  P::::P           o::::o     o::::o   s::::::s            t:::::t           ---------------   E::::::EEEEEEEEEE        x::::::::x      p:::::p     p:::::p l::::l o::::o     o::::o i::::i      t:::::t          
+  P::::P           o::::o     o::::o      s::::::s         t:::::t                             E:::::E                  x::::::::x      p:::::p     p:::::p l::::l o::::o     o::::o i::::i      t:::::t          
+  P::::P           o::::o     o::::ossssss   s:::::s       t:::::t    tttttt                   E:::::E       EEEEEE    x::::::::::x     p:::::p    p::::::p l::::l o::::o     o::::o i::::i      t:::::t    tttttt
+PP::::::PP         o:::::ooooo:::::os:::::ssss::::::s      t::::::tttt:::::t                 EE::::::EEEEEEEE:::::E   x:::::xx:::::x    p:::::ppppp:::::::pl::::::lo:::::ooooo:::::oi::::::i     t::::::tttt:::::t
+P::::::::P         o:::::::::::::::os::::::::::::::s       tt::::::::::::::t                 E::::::::::::::::::::E  x:::::x  x:::::x   p::::::::::::::::p l::::::lo:::::::::::::::oi::::::i     tt::::::::::::::t
+P::::::::P          oo:::::::::::oo  s:::::::::::ss          tt:::::::::::tt                 E::::::::::::::::::::E x:::::x    x:::::x  p::::::::::::::pp  l::::::l oo:::::::::::oo i::::::i       tt:::::::::::tt
+PPPPPPPPPP            ooooooooooo     sssssssssss              ttttttttttt                   EEEEEEEEEEEEEEEEEEEEEExxxxxxx      xxxxxxx p::::::pppppppp    llllllll   ooooooooooo   iiiiiiii         ttttttttttt  
+                                                                                                                                        p:::::p                                                                   
+                                                                                                                                        p:::::p                                                                   
+                                                                                                                                       p:::::::p                                                                  
+                                                                                                                                       p:::::::p                                                                  
+                                                                                                                                       p:::::::p                                                                  
+                                                                                                                                       ppppppppp                                                                  
+                                                                                                                                                                                                                  
+
     '''
 
     def __init__(self):
@@ -388,7 +487,7 @@ class postExploitationMenu:
         elif choice11 == "3":
             weeman()
         elif choice11 == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -405,10 +504,33 @@ Information Gathering Tools Classes
 
 class informationGatheringMenu:
     menuLogo = '''
-    88 88b 88 888888  dP"Yb
-    88 88Yb88 88__   dP   Yb
-    88 88 Y88 88""   Yb   dP
-    88 88  Y8 88      YbodP
+    
+                                                                                                                     
+                                                                                                                     
+IIIIIIIIII                   ffffffffffffffff                                         GGGGGGGGGGGGG                  
+I::::::::I                  f::::::::::::::::f                                     GGG::::::::::::G                  
+I::::::::I                 f::::::::::::::::::f                                  GG:::::::::::::::G                  
+II::::::II                 f::::::fffffff:::::f                                 G:::::GGGGGGGG::::G                  
+  I::::Innnn  nnnnnnnn     f:::::f       ffffffooooooooooo                     G:::::G       GGGGGG  aaaaaaaaaaaaa   
+  I::::In:::nn::::::::nn   f:::::f           oo:::::::::::oo                  G:::::G                a::::::::::::a  
+  I::::In::::::::::::::nn f:::::::ffffff    o:::::::::::::::o                 G:::::G                aaaaaaaaa:::::a 
+  I::::Inn:::::::::::::::nf::::::::::::f    o:::::ooooo:::::o --------------- G:::::G    GGGGGGGGGG           a::::a 
+  I::::I  n:::::nnnn:::::nf::::::::::::f    o::::o     o::::o -:::::::::::::- G:::::G    G::::::::G    aaaaaaa:::::a 
+  I::::I  n::::n    n::::nf:::::::ffffff    o::::o     o::::o --------------- G:::::G    GGGGG::::G  aa::::::::::::a 
+  I::::I  n::::n    n::::n f:::::f          o::::o     o::::o                 G:::::G        G::::G a::::aaaa::::::a 
+  I::::I  n::::n    n::::n f:::::f          o::::o     o::::o                  G:::::G       G::::Ga::::a    a:::::a 
+II::::::IIn::::n    n::::nf:::::::f         o:::::ooooo:::::o                   G:::::GGGGGGGG::::Ga::::a    a:::::a 
+I::::::::In::::n    n::::nf:::::::f         o:::::::::::::::o                    GG:::::::::::::::Ga:::::aaaa::::::a 
+I::::::::In::::n    n::::nf:::::::f          oo:::::::::::oo                       GGG::::::GGG:::G a::::::::::aa:::a
+IIIIIIIIIInnnnnn    nnnnnnfffffffff            ooooooooooo                            GGGGGG   GGGG  aaaaaaaaaa  aaaa
+                                                                                                                     
+                                                                                                                     
+                                                                                                                     
+                                                                                                                     
+                                                                                                                     
+                                                                                                                     
+                                                                                                                     
+
     '''
 
     def __init__(self):
@@ -443,7 +565,7 @@ class informationGatheringMenu:
         elif choice2 == "8":
             crips()
         elif choice2 == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -455,10 +577,33 @@ class informationGatheringMenu:
 
 class nmap:
     nmapLogo = '''
-    88b 88 8b    d8    db    88""Yb
-    88Yb88 88b  d88   dPYb   88__dP
-    88 Y88 88YbdP88  dP__Yb  88"""
-    88  Y8 88 YY 88 dP""""Yb 88
+    
+                                                                                     
+                                                                                     
+NNNNNNNN        NNNNNNNN                                                             
+N:::::::N       N::::::N                                                             
+N::::::::N      N::::::N                                                             
+N:::::::::N     N::::::N                                                             
+N::::::::::N    N::::::N   mmmmmmm    mmmmmmm     aaaaaaaaaaaaa  ppppp   ppppppppp   
+N:::::::::::N   N::::::N mm:::::::m  m:::::::mm   a::::::::::::a p::::ppp:::::::::p  
+N:::::::N::::N  N::::::Nm::::::::::mm::::::::::m  aaaaaaaaa:::::ap:::::::::::::::::p 
+N::::::N N::::N N::::::Nm::::::::::::::::::::::m           a::::app::::::ppppp::::::p
+N::::::N  N::::N:::::::Nm:::::mmm::::::mmm:::::m    aaaaaaa:::::a p:::::p     p:::::p
+N::::::N   N:::::::::::Nm::::m   m::::m   m::::m  aa::::::::::::a p:::::p     p:::::p
+N::::::N    N::::::::::Nm::::m   m::::m   m::::m a::::aaaa::::::a p:::::p     p:::::p
+N::::::N     N:::::::::Nm::::m   m::::m   m::::ma::::a    a:::::a p:::::p    p::::::p
+N::::::N      N::::::::Nm::::m   m::::m   m::::ma::::a    a:::::a p:::::ppppp:::::::p
+N::::::N       N:::::::Nm::::m   m::::m   m::::ma:::::aaaa::::::a p::::::::::::::::p 
+N::::::N        N::::::Nm::::m   m::::m   m::::m a::::::::::aa:::ap::::::::::::::pp  
+NNNNNNNN         NNNNNNNmmmmmm   mmmmmm   mmmmmm  aaaaaaaaaa  aaaap::::::pppppppp    
+                                                                  p:::::p            
+                                                                  p:::::p            
+                                                                 p:::::::p           
+                                                                 p:::::::p           
+                                                                 p:::::::p           
+                                                                 ppppppppp           
+                                                                                     
+
     '''
 
     def __init__(self):
@@ -546,10 +691,33 @@ class setoolkit:
 
 class host2ip:
     host2ipLogo = '''
-    88  88  dP"Yb  .dP"Y8 888888 oP"Yb. 88 88""Yb
-    88  88 dP   Yb `Ybo."   88   "' dP' 88 88__dP
-    888888 Yb   dP o.`Y8b   88     dP'  88 88"""
-    88  88  YbodP  8bodP'   88   .d8888 88 88
+   
+                                                                                                                                      
+                                                                                                                                      
+HHHHHHHHH     HHHHHHHHH     OOOOOOOOO        SSSSSSSSSSSSSSS TTTTTTTTTTTTTTTTTTTTTTT 222222222222222    IIIIIIIIIIPPPPPPPPPPPPPPPPP   
+H:::::::H     H:::::::H   OO:::::::::OO    SS:::::::::::::::ST:::::::::::::::::::::T2:::::::::::::::22  I::::::::IP::::::::::::::::P  
+H:::::::H     H:::::::H OO:::::::::::::OO S:::::SSSSSS::::::ST:::::::::::::::::::::T2::::::222222:::::2 I::::::::IP::::::PPPPPP:::::P 
+HH::::::H     H::::::HHO:::::::OOO:::::::OS:::::S     SSSSSSST:::::TT:::::::TT:::::T2222222     2:::::2 II::::::IIPP:::::P     P:::::P
+  H:::::H     H:::::H  O::::::O   O::::::OS:::::S            TTTTTT  T:::::T  TTTTTT            2:::::2   I::::I    P::::P     P:::::P
+  H:::::H     H:::::H  O:::::O     O:::::OS:::::S                    T:::::T                    2:::::2   I::::I    P::::P     P:::::P
+  H::::::HHHHH::::::H  O:::::O     O:::::O S::::SSSS                 T:::::T                 2222::::2    I::::I    P::::PPPPPP:::::P 
+  H:::::::::::::::::H  O:::::O     O:::::O  SS::::::SSSSS            T:::::T            22222::::::22     I::::I    P:::::::::::::PP  
+  H:::::::::::::::::H  O:::::O     O:::::O    SSS::::::::SS          T:::::T          22::::::::222       I::::I    P::::PPPPPPPPP    
+  H::::::HHHHH::::::H  O:::::O     O:::::O       SSSSSS::::S         T:::::T         2:::::22222          I::::I    P::::P            
+  H:::::H     H:::::H  O:::::O     O:::::O            S:::::S        T:::::T        2:::::2               I::::I    P::::P            
+  H:::::H     H:::::H  O::::::O   O::::::O            S:::::S        T:::::T        2:::::2               I::::I    P::::P            
+HH::::::H     H::::::HHO:::::::OOO:::::::OSSSSSSS     S:::::S      TT:::::::TT      2:::::2       222222II::::::IIPP::::::PP          
+H:::::::H     H:::::::H OO:::::::::::::OO S::::::SSSSSS:::::S      T:::::::::T      2::::::2222222:::::2I::::::::IP::::::::P          
+H:::::::H     H:::::::H   OO:::::::::OO   S:::::::::::::::SS       T:::::::::T      2::::::::::::::::::2I::::::::IP::::::::P          
+HHHHHHHHH     HHHHHHHHH     OOOOOOOOO      SSSSSSSSSSSSSSS         TTTTTTTTTTT      22222222222222222222IIIIIIIIIIPPPPPPPPPP          
+                                                                                                                                      
+                                                                                                                                      
+                                                                                                                                      
+                                                                                                                                      
+                                                                                                                                      
+                                                                                                                                      
+                                                                                                                                      
+
     '''
 
     def __init__(self):
@@ -563,10 +731,33 @@ class host2ip:
 
 class wpscan:
     wpscanLogo = '''
-    Yb        dP 88""Yb .dP"Y8  dP""b8    db    88b 88
-     Yb  db  dP  88__dP `Ybo." dP   `"   dPYb   88Yb88
-      YbdPYbdP   88"""  o.`Y8b Yb       dP__Yb  88 Y88
-       YP  YP    88     8bodP'  YboodP dP""""Yb 88  Y8
+    
+                                                                                                                                                                
+                                                                                                                                                                
+WWWWWWWW                           WWWWWWWWPPPPPPPPPPPPPPPPP      SSSSSSSSSSSSSSS         CCCCCCCCCCCCC               AAA               NNNNNNNN        NNNNNNNN
+W::::::W                           W::::::WP::::::::::::::::P   SS:::::::::::::::S     CCC::::::::::::C              A:::A              N:::::::N       N::::::N
+W::::::W                           W::::::WP::::::PPPPPP:::::P S:::::SSSSSS::::::S   CC:::::::::::::::C             A:::::A             N::::::::N      N::::::N
+W::::::W                           W::::::WPP:::::P     P:::::PS:::::S     SSSSSSS  C:::::CCCCCCCC::::C            A:::::::A            N:::::::::N     N::::::N
+ W:::::W           WWWWW           W:::::W   P::::P     P:::::PS:::::S             C:::::C       CCCCCC           A:::::::::A           N::::::::::N    N::::::N
+  W:::::W         W:::::W         W:::::W    P::::P     P:::::PS:::::S            C:::::C                        A:::::A:::::A          N:::::::::::N   N::::::N
+   W:::::W       W:::::::W       W:::::W     P::::PPPPPP:::::P  S::::SSSS         C:::::C                       A:::::A A:::::A         N:::::::N::::N  N::::::N
+    W:::::W     W:::::::::W     W:::::W      P:::::::::::::PP    SS::::::SSSSS    C:::::C                      A:::::A   A:::::A        N::::::N N::::N N::::::N
+     W:::::W   W:::::W:::::W   W:::::W       P::::PPPPPPPPP        SSS::::::::SS  C:::::C                     A:::::A     A:::::A       N::::::N  N::::N:::::::N
+      W:::::W W:::::W W:::::W W:::::W        P::::P                   SSSSSS::::S C:::::C                    A:::::AAAAAAAAA:::::A      N::::::N   N:::::::::::N
+       W:::::W:::::W   W:::::W:::::W         P::::P                        S:::::SC:::::C                   A:::::::::::::::::::::A     N::::::N    N::::::::::N
+        W:::::::::W     W:::::::::W          P::::P                        S:::::S C:::::C       CCCCCC    A:::::AAAAAAAAAAAAA:::::A    N::::::N     N:::::::::N
+         W:::::::W       W:::::::W         PP::::::PP          SSSSSSS     S:::::S  C:::::CCCCCCCC::::C   A:::::A             A:::::A   N::::::N      N::::::::N
+          W:::::W         W:::::W          P::::::::P          S::::::SSSSSS:::::S   CC:::::::::::::::C  A:::::A               A:::::A  N::::::N       N:::::::N
+           W:::W           W:::W           P::::::::P          S:::::::::::::::SS      CCC::::::::::::C A:::::A                 A:::::A N::::::N        N::::::N
+            WWW             WWW            PPPPPPPPPP           SSSSSSSSSSSSSSS           CCCCCCCCCCCCCAAAAAAA                   AAAAAAANNNNNNNN         NNNNNNN
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+
     '''
 
     def __init__(self):
@@ -623,10 +814,21 @@ class wpscan:
 
 class CMSmap:
     CMSmapLogo = '''
-     dP""b8 8b    d8 .dP"Y8 8b    d8    db    88""Yb
-    dP   `" 88b  d88 `Ybo." 88b  d88   dPYb   88__dP
-    Yb      88YbdP88 o.`Y8b 88YbdP88  dP__Yb  88"""
-     YboodP 88 YY 88 8bodP' 88 YY 88 dP""""Yb 88
+     
+                                                                
+                                                                
+  .--.   ___ .-. .-.      .--.   ___ .-. .-.     .---.   .-..   
+ /    \ (   )   '   \   /  _  \ (   )   '   \   / .-, \ /    \  
+|  .-. ; |  .-.  .-. ; . .' `. ; |  .-.  .-. ; (__) ; |' .-,  ; 
+|  |(___)| |  | |  | | | '   | | | |  | |  | |   .'`  || |  . | 
+|  |     | |  | |  | | _\_`.(___)| |  | |  | |  / .'| || |  | | 
+|  | ___ | |  | |  | |(   ). '.  | |  | |  | | | /  | || |  | | 
+|  '(   )| |  | |  | | | |  `\ | | |  | |  | | ; |  ; || |  ' | 
+'  `-' | | |  | |  | | ; '._,' ' | |  | |  | | ' `-'  || `-'  ' 
+ `.__,' (___)(___)(___) '.___.' (___)(___)(___)`.__.'_.| \__.'  
+                                                       | |      
+                                                      (___)     
+
     '''
 
     def __init__(self):
@@ -660,10 +862,21 @@ class CMSmap:
 
 class XSStrike:
     XSStrikeLogo = '''
-    Yb  dP .dP"Y8 .dP"Y8 888888 88""Yb 88 88  dP 888888
-     YbdP  `Ybo." `Ybo."   88   88__dP 88 88odP  88__
-     dPYb  o.`Y8b o.`Y8b   88   88"Yb  88 88"Yb  88""
-    dP  Yb 8bodP' 8bodP'   88   88  Yb 88 88  Yb 888888
+    
+                              ___                    ___                
+                             (   )              .-. (   )               
+ ___  ___    .--.      .--.   | |_    ___ .-.  ( __) | |   ___   .--.   
+(   )(   ) /  _  \   /  _  \ (   __) (   )   \ (''") | |  (   ) /    \  
+ | |  | | . .' `. ; . .' `. ; | |     | ' .-. ; | |  | |  ' /  |  .-. ; 
+  \ `' /  | '   | | | '   | | | | ___ |  / (___)| |  | |,' /   |  | | | 
+  / ,. \  _\_`.(___)_\_`.(___)| |(   )| |       | |  | .  '.   |  |/  | 
+ ' .  ; .(   ). '. (   ). '.  | | | | | |       | |  | | `. \  |  ' _.' 
+ | |  | | | |  `\ | | |  `\ | | ' | | | |       | |  | |   \ \ |  .'.-. 
+ | |  | | ; '._,' ' ; '._,' ' ' `-' ; | |       | |  | |    \ .'  `-' / 
+(___)(___) '.___.'   '.___.'   `.__. (___)     (___)(___ ) (___)`.__.'  
+                                                                        
+                                                                        
+
     '''
 
     def __init__(self):
@@ -691,10 +904,33 @@ class XSStrike:
 
 class doork:
     doorkLogo = '''
-    8888b.   dP"Yb   dP"Yb  88""Yb 88  dP
-     8I  Yb dP   Yb dP   Yb 88__dP 88odP
-     8I  dY Yb   dP Yb   dP 88"Yb  88"Yb
-    8888Y"   YbodP   YbodP  88  Yb 88  Yb
+    
+                                                                                                   
+                                                                                                   
+DDDDDDDDDDDDD             OOOOOOOOO          OOOOOOOOO     RRRRRRRRRRRRRRRRR   KKKKKKKKK    KKKKKKK
+D::::::::::::DDD        OO:::::::::OO      OO:::::::::OO   R::::::::::::::::R  K:::::::K    K:::::K
+D:::::::::::::::DD    OO:::::::::::::OO  OO:::::::::::::OO R::::::RRRRRR:::::R K:::::::K    K:::::K
+DDD:::::DDDDD:::::D  O:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::RK:::::::K   K::::::K
+  D:::::D    D:::::D O::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::RKK::::::K  K:::::KKK
+  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  K:::::K K:::::K   
+  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R   K::::::K:::::K    
+  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R:::::::::::::RR    K:::::::::::K     
+  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R   K:::::::::::K     
+  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  K::::::K:::::K    
+  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  K:::::K K:::::K   
+  D:::::D    D:::::D O::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::RKK::::::K  K:::::KKK
+DDD:::::DDDDD:::::D  O:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::RK:::::::K   K::::::K
+D:::::::::::::::DD    OO:::::::::::::OO  OO:::::::::::::OO R::::::R     R:::::RK:::::::K    K:::::K
+D::::::::::::DDD        OO:::::::::OO      OO:::::::::OO   R::::::R     R:::::RK:::::::K    K:::::K
+DDDDDDDDDDDDD             OOOOOOOOO          OOOOOOOOO     RRRRRRRR     RRRRRRRKKKKKKKKK    KKKKKKK
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+
     '''
 
     def __init__(self):
@@ -731,10 +967,17 @@ class doork:
 
 class crips:
     cripsLogo = '''
-     dP""b8 88""Yb 88 88""Yb .dP"Y8
-    dP   `" 88__dP 88 88__dP `Ybo."
-    Yb      88"Yb  88 88"""  o.`Y8b
-     YboodP 88  Yb 88 88     8bodP'
+     
+ _______  _______ _________ _______  _______ 
+(  ____ \(  ____ )\__   __/(  ____ )(  ____ \
+| (    \/| (    )|   ) (   | (    )|| (    \/
+| |      | (____)|   | |   | (____)|| (_____ 
+| |      |     __)   | |   |  _____)(_____  )
+| |      | (\ (      | |   | (            ) |
+| (____/\| ) \ \_____) (___| )      /\____) |
+(_______/|/   \__/\_______/|/       \_______)
+                                             
+
     '''
 
     def __init(self):
@@ -769,10 +1012,33 @@ Password Attack Tools Classes
 
 class passwordAttacksMenu:
     menuLogo = '''
-    88""Yb    db    .dP"Y8 .dP"Y8 Yb        dP 8888b.
-    88__dP   dPYb   `Ybo." `Ybo."  Yb  db  dP   8I  Yb
-    88"""   dP__Yb  o.`Y8b o.`Y8b   YbdPYbdP    8I  dY
-    88     dP""""Yb 8bodP' 8bodP'    YP  YP    8888Y"
+    
+                                                                                                                                                
+                                                                                                                                                
+PPPPPPPPPPPPPPPPP        AAA                 SSSSSSSSSSSSSSS    SSSSSSSSSSSSSSS WWWWWWWW                           WWWWWWWWDDDDDDDDDDDDD        
+P::::::::::::::::P      A:::A              SS:::::::::::::::S SS:::::::::::::::SW::::::W                           W::::::WD::::::::::::DDD     
+P::::::PPPPPP:::::P    A:::::A            S:::::SSSSSS::::::SS:::::SSSSSS::::::SW::::::W                           W::::::WD:::::::::::::::DD   
+PP:::::P     P:::::P  A:::::::A           S:::::S     SSSSSSSS:::::S     SSSSSSSW::::::W                           W::::::WDDD:::::DDDDD:::::D  
+  P::::P     P:::::P A:::::::::A          S:::::S            S:::::S             W:::::W           WWWWW           W:::::W   D:::::D    D:::::D 
+  P::::P     P:::::PA:::::A:::::A         S:::::S            S:::::S              W:::::W         W:::::W         W:::::W    D:::::D     D:::::D
+  P::::PPPPPP:::::PA:::::A A:::::A         S::::SSSS          S::::SSSS            W:::::W       W:::::::W       W:::::W     D:::::D     D:::::D
+  P:::::::::::::PPA:::::A   A:::::A         SS::::::SSSSS      SS::::::SSSSS        W:::::W     W:::::::::W     W:::::W      D:::::D     D:::::D
+  P::::PPPPPPPPP A:::::A     A:::::A          SSS::::::::SS      SSS::::::::SS       W:::::W   W:::::W:::::W   W:::::W       D:::::D     D:::::D
+  P::::P        A:::::AAAAAAAAA:::::A            SSSSSS::::S        SSSSSS::::S       W:::::W W:::::W W:::::W W:::::W        D:::::D     D:::::D
+  P::::P       A:::::::::::::::::::::A                S:::::S            S:::::S       W:::::W:::::W   W:::::W:::::W         D:::::D     D:::::D
+  P::::P      A:::::AAAAAAAAAAAAA:::::A               S:::::S            S:::::S        W:::::::::W     W:::::::::W          D:::::D    D:::::D 
+PP::::::PP   A:::::A             A:::::A  SSSSSSS     S:::::SSSSSSSS     S:::::S         W:::::::W       W:::::::W         DDD:::::DDDDD:::::D  
+P::::::::P  A:::::A               A:::::A S::::::SSSSSS:::::SS::::::SSSSSS:::::S          W:::::W         W:::::W          D:::::::::::::::DD   
+P::::::::P A:::::A                 A:::::AS:::::::::::::::SS S:::::::::::::::SS            W:::W           W:::W           D::::::::::::DDD     
+PPPPPPPPPPAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS    SSSSSSSSSSSSSSS               WWW             WWW            DDDDDDDDDDDDD        
+                                                                                                                                                
+                                                                                                                                                
+                                                                                                                                                
+                                                                                                                                                
+                                                                                                                                                
+                                                                                                                                                
+                                                                                                                                                
+
     '''
 
     def __init__(self):
@@ -789,7 +1055,7 @@ class passwordAttacksMenu:
         elif choice3 == "2":
             brutex()
         elif choice3 == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -801,10 +1067,21 @@ class passwordAttacksMenu:
 
 class cupp:
     cuppLogo = '''
-     dP""b8 88   88 88""Yb 88""Yb
-    dP   `" 88   88 88__dP 88__dP
-    Yb      Y8   8P 88"""  88"""
-     YboodP `YbodP' 88     88
+    
+       _..._                                                            
+    .-'_..._''.                                                         
+  .' .'      '.\          _________   _...._    _________   _...._      
+ / .'                     \        |.'      '-. \        |.'      '-.   
+. '                        \        .'```'.    '.\        .'```'.    '. 
+| |                         \      |       \     \\      |       \     \
+| |               _    _     |     |        |    | |     |        |    |
+. '              | '  / |    |      \      /    .  |      \      /    . 
+ \ '.          ..' | .' |    |     |\`'-.-'   .'   |     |\`'-.-'   .'  
+  '. `._____.-'//  | /  |    |     | '-....-'`     |     | '-....-'`    
+    `-.______ /|   `'.  |   .'     '.             .'     '.             
+             ` '   .'|  '/'-----------'         '-----------'           
+                `-'  `--'                                               
+
      '''
 
     def __init__(self):
@@ -835,10 +1112,16 @@ Wireless Testing Tools Classes
 
 class wirelessTestingMenu:
     menuLogo = '''
-    Yb        dP 88 88""Yb 888888 88     888888 .dP"Y8 .dP"Y8
-     Yb  db  dP  88 88__dP 88__   88     88__   `Ybo." `Ybo."
-      YbdPYbdP   88 88"Yb  88""   88  .o 88""   o.`Y8b o.`Y8b
-       YP  YP    88 88  Yb 888888 88ood8 888888 8bodP' 8bodP'
+   
+ __          __ _____  _____   ______  _       ______   _____  _____ 
+ \ \        / /|_   _||  __ \ |  ____|| |     |  ____| / ____|/ ____|
+  \ \  /\  / /   | |  | |__) || |__   | |     | |__   | (___ | (___  
+   \ \/  \/ /    | |  |  _  / |  __|  | |     |  __|   \___ \ \___ \ 
+    \  /\  /    _| |_ | | \ \ | |____ | |____ | |____  ____) |____) |
+     \/  \/    |_____||_|  \_\|______||______||______||_____/|_____/ 
+                                                                     
+                                                                     
+
     '''
 
     def __init__(self):
@@ -857,7 +1140,7 @@ class wirelessTestingMenu:
         elif choice4 == "3":
             bluepot()
         elif choice4 == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -947,10 +1230,16 @@ Exploitation Tools Classes
 
 class exploitationToolsMenu:
     menuLogo = '''
-    888888 Yb  dP 88""Yb 88
-    88__    YbdP  88__dP 88
-    88""    dPYb  88"""  88  .o
-    888888 dP  Yb 88     88ood8
+    
+  ______ __   __ _____   _       ____  _____  _______ 
+ |  ____|\ \ / /|  __ \ | |     / __ \|_   _||__   __|
+ | |__    \ V / | |__) || |    | |  | | | |     | |   
+ |  __|    > <  |  ___/ | |    | |  | | | |     | |   
+ | |____  / . \ | |     | |____| |__| |_| |_    | |   
+ |______|/_/ \_\|_|     |______|\____/|_____|   |_|   
+                                                      
+                                                      
+
     '''
 
     def __init__(self):
@@ -1056,7 +1345,7 @@ def weeman():
         os.system(
             "git clone --depth=1 https://github.com/samyoyo/weeman.git && cd weeman && python weeman.py")
     else:
-        fsociety()
+        sayahac()
 
 
 def gabriel():
@@ -1081,7 +1370,7 @@ def ifinurl():
     if cinurl in yes:
         inurl()
     else:
-        fsociety()
+        sayahac()
 
 
 def bsqlbf():
@@ -1100,7 +1389,7 @@ def atscan():
         os.system(
             "git clone --depth=1 https://github.com/AlisamTechnology/ATSCAN.git && cd ATSCAN && perl atscan.pl")
     else:
-        fsociety()
+        sayahac()
 
 
 def commix():
@@ -1159,7 +1448,7 @@ def jboss():
         os.system(
             "git clone --depth=1 https://github.com/SpiderLabs/jboss-autopwn.git"), sys.exit()
     else:
-        fsociety()
+        sayahac()
 
 
 def wppluginscan():
@@ -1418,7 +1707,7 @@ class Fscan:
             elif choice == '12':
                 self.cloudflareBypasser()
             elif choice == '99':
-                fsociety()
+                sayahac()
             con = raw_input(' Continue [Y/n] -> ')
             if con[0].upper() == 'N':
                 exit()
@@ -1846,7 +2135,7 @@ def maine():
         elif choose == "4":
             about()
         elif choose == "99":
-            fsociety()
+            sayahac()
         else:
             maine()
 
@@ -2113,7 +2402,7 @@ def wpminiscanner():
 if __name__ == "__main__":
     try:
         agreement()
-        fsociety()
+        sayahac()
     except KeyboardInterrupt:
         print(" Finishing up...\n")
         time.sleep(0.25)
