@@ -174,8 +174,6 @@ class sayahac:
             postExploitationMenu()
         elif choice == "0":
             self.update()
-        elif choice == "11":
-            self.githubContributors()
         elif choice == "99":
             with open(configFile, 'wb') as configfile:
                 config.write(configfile)
@@ -206,33 +204,18 @@ class sayahac:
 
 
 class sniffingSpoofingMenu:
-    menuLogo = '''
+    menuLogo = ''' 
     
-                                                                                                                                 
-                                                                                                                                 
-                                     iiii     ffffffffffffffff    ffffffffffffffff    iiii                                       
-                                    i::::i   f::::::::::::::::f  f::::::::::::::::f  i::::i                                      
-                                     iiii   f::::::::::::::::::ff::::::::::::::::::f  iiii                                       
-                                            f::::::fffffff:::::ff::::::fffffff:::::f                                             
-    ssssssssss   nnnn  nnnnnnnn    iiiiiii  f:::::f       fffffff:::::f       ffffffiiiiiiinnnn  nnnnnnnn       ggggggggg   ggggg
-  ss::::::::::s  n:::nn::::::::nn  i:::::i  f:::::f             f:::::f             i:::::in:::nn::::::::nn    g:::::::::ggg::::g
-ss:::::::::::::s n::::::::::::::nn  i::::i f:::::::ffffff      f:::::::ffffff        i::::in::::::::::::::nn  g:::::::::::::::::g
-s::::::ssss:::::snn:::::::::::::::n i::::i f::::::::::::f      f::::::::::::f        i::::inn:::::::::::::::ng::::::ggggg::::::gg
- s:::::s  ssssss   n:::::nnnn:::::n i::::i f::::::::::::f      f::::::::::::f        i::::i  n:::::nnnn:::::ng:::::g     g:::::g 
-   s::::::s        n::::n    n::::n i::::i f:::::::ffffff      f:::::::ffffff        i::::i  n::::n    n::::ng:::::g     g:::::g 
-      s::::::s     n::::n    n::::n i::::i  f:::::f             f:::::f              i::::i  n::::n    n::::ng:::::g     g:::::g 
-ssssss   s:::::s   n::::n    n::::n i::::i  f:::::f             f:::::f              i::::i  n::::n    n::::ng::::::g    g:::::g 
-s:::::ssss::::::s  n::::n    n::::ni::::::if:::::::f           f:::::::f            i::::::i n::::n    n::::ng:::::::ggggg:::::g 
-s::::::::::::::s   n::::n    n::::ni::::::if:::::::f           f:::::::f            i::::::i n::::n    n::::n g::::::::::::::::g 
- s:::::::::::ss    n::::n    n::::ni::::::if:::::::f           f:::::::f            i::::::i n::::n    n::::n  gg::::::::::::::g 
-  sssssssssss      nnnnnn    nnnnnniiiiiiiifffffffff           fffffffff            iiiiiiii nnnnnn    nnnnnn    gggggggg::::::g 
-                                                                                                                         g:::::g 
-                                                                                                             gggggg      g:::::g 
-                                                                                                             g:::::gg   gg:::::g 
-                                                                                                              g::::::ggg:::::::g 
-                                                                                                               gg:::::::::::::g  
-                                                                                                                 ggg::::::ggg    
-                                                                                                                    gggggg       
+                                                                                                 
+ _____         _   __   __  _               
+/  ___|       (_) / _| / _|(_)              
+\ `--.  _ __   _ | |_ | |_  _  _ __    __ _ 
+ `--. \| '_ \ | ||  _||  _|| || '_ \  / _` |
+/\__/ /| | | || || |  | |  | || | | || (_| |
+\____/ |_| |_||_||_|  |_|  |_||_| |_| \__, |
+                                       __/ |
+                                      |___/ 
+                                                                                             gggggg       
 
     '''
 
@@ -355,31 +338,16 @@ wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb
 class privateWebHacking:
     menuLogo = '''
     
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                           bbbbbbbb            
-PPPPPPPPPPPPPPPPP                        iiii                                                  tttt                                                                                                        b::::::b            
-P::::::::::::::::P                      i::::i                                              ttt:::t                                                                                                        b::::::b            
-P::::::PPPPPP:::::P                      iiii                                               t:::::t                                                                                                        b::::::b            
-PP:::::P     P:::::P                                                                        t:::::t                                                                                                         b:::::b            
-  P::::P     P:::::Prrrrr   rrrrrrrrr  iiiiiiivvvvvvv           vvvvvvvaaaaaaaaaaaaa  ttttttt:::::ttttttt        eeeeeeeeeeee                     wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb    
-  P::::P     P:::::Pr::::rrr:::::::::r i:::::i v:::::v         v:::::v a::::::::::::a t:::::::::::::::::t      ee::::::::::::ee                    w:::::w         w:::::w         w:::::wee::::::::::::ee  b::::::::::::::bb  
-  P::::PPPPPP:::::P r:::::::::::::::::r i::::i  v:::::v       v:::::v  aaaaaaaaa:::::at:::::::::::::::::t     e::::::eeeee:::::ee                   w:::::w       w:::::::w       w:::::we::::::eeeee:::::eeb::::::::::::::::b 
-  P:::::::::::::PP  rr::::::rrrrr::::::ri::::i   v:::::v     v:::::v            a::::atttttt:::::::tttttt    e::::::e     e:::::e ---------------    w:::::w     w:::::::::w     w:::::we::::::e     e:::::eb:::::bbbbb:::::::b
-  P::::PPPPPPPPP     r:::::r     r:::::ri::::i    v:::::v   v:::::v      aaaaaaa:::::a      t:::::t          e:::::::eeeee::::::e -:::::::::::::-     w:::::w   w:::::w:::::w   w:::::w e:::::::eeeee::::::eb:::::b    b::::::b
-  P::::P             r:::::r     rrrrrrri::::i     v:::::v v:::::v     aa::::::::::::a      t:::::t          e:::::::::::::::::e  ---------------      w:::::w w:::::w w:::::w w:::::w  e:::::::::::::::::e b:::::b     b:::::b
-  P::::P             r:::::r            i::::i      v:::::v:::::v     a::::aaaa::::::a      t:::::t          e::::::eeeeeeeeeee                         w:::::w:::::w   w:::::w:::::w   e::::::eeeeeeeeeee  b:::::b     b:::::b
-  P::::P             r:::::r            i::::i       v:::::::::v     a::::a    a:::::a      t:::::t    tttttte:::::::e                                   w:::::::::w     w:::::::::w    e:::::::e           b:::::b     b:::::b
-PP::::::PP           r:::::r           i::::::i       v:::::::v      a::::a    a:::::a      t::::::tttt:::::te::::::::e                                   w:::::::w       w:::::::w     e::::::::e          b:::::bbbbbb::::::b
-P::::::::P           r:::::r           i::::::i        v:::::v       a:::::aaaa::::::a      tt::::::::::::::t e::::::::eeeeeeee                            w:::::w         w:::::w       e::::::::eeeeeeee  b::::::::::::::::b 
-P::::::::P           r:::::r           i::::::i         v:::v         a::::::::::aa:::a       tt:::::::::::tt  ee:::::::::::::e                             w:::w           w:::w         ee:::::::::::::e  b:::::::::::::::b  
-PPPPPPPPPP           rrrrrrr           iiiiiiii          vvv           aaaaaaaaaa  aaaa         ttttttttttt      eeeeeeeeeeeeee                              www             www            eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                                               
-                                                                                                                                                                                                                               
+
+______       _               _                 _    _        _     
+| ___ \     (_)             | |               | |  | |      | |    
+| |_/ /_ __  _ __   __ __ _ | |_  ___  ______ | |  | |  ___ | |__  
+|  __/| '__|| |\ \ / // _` || __|/ _ \|______|| |/\| | / _ \| '_ \ 
+| |   | |   | | \ V /| (_| || |_|  __/        \  /\  /|  __/| |_) |
+\_|   |_|   |_|  \_/  \__,_| \__|\___|         \/  \/  \___||_.__/ 
+                                                                   
+                                                                   
+                                                                                                                                                                                                                          
 
     '''
 
@@ -398,31 +366,15 @@ PPPPPPPPPP           rrrrrrr           iiiiiiii          vvv           aaaaaaaaa
 class postExploitationMenu:
     menuLogo = '''
     
-                                                                                                                                                                                                                  
-                                                                                                                                                                                                                  
-PPPPPPPPPPPPPPPPP                                             tttt                           EEEEEEEEEEEEEEEEEEEEEE                                        lllllll                    iiii          tttt          
-P::::::::::::::::P                                         ttt:::t                           E::::::::::::::::::::E                                        l:::::l                   i::::i      ttt:::t          
-P::::::PPPPPP:::::P                                        t:::::t                           E::::::::::::::::::::E                                        l:::::l                    iiii       t:::::t          
-PP:::::P     P:::::P                                       t:::::t                           EE::::::EEEEEEEEE::::E                                        l:::::l                               t:::::t          
-  P::::P     P:::::P  ooooooooooo       ssssssssss   ttttttt:::::ttttttt                       E:::::E       EEEEEExxxxxxx      xxxxxxxppppp   ppppppppp    l::::l    ooooooooooo   iiiiiiittttttt:::::ttttttt    
-  P::::P     P:::::Poo:::::::::::oo   ss::::::::::s  t:::::::::::::::::t                       E:::::E              x:::::x    x:::::x p::::ppp:::::::::p   l::::l  oo:::::::::::oo i:::::it:::::::::::::::::t    
-  P::::PPPPPP:::::Po:::::::::::::::oss:::::::::::::s t:::::::::::::::::t                       E::::::EEEEEEEEEE     x:::::x  x:::::x  p:::::::::::::::::p  l::::l o:::::::::::::::o i::::it:::::::::::::::::t    
-  P:::::::::::::PP o:::::ooooo:::::os::::::ssss:::::stttttt:::::::tttttt     ---------------   E:::::::::::::::E      x:::::xx:::::x   pp::::::ppppp::::::p l::::l o:::::ooooo:::::o i::::itttttt:::::::tttttt    
-  P::::PPPPPPPPP   o::::o     o::::o s:::::s  ssssss       t:::::t           -:::::::::::::-   E:::::::::::::::E       x::::::::::x     p:::::p     p:::::p l::::l o::::o     o::::o i::::i      t:::::t          
-  P::::P           o::::o     o::::o   s::::::s            t:::::t           ---------------   E::::::EEEEEEEEEE        x::::::::x      p:::::p     p:::::p l::::l o::::o     o::::o i::::i      t:::::t          
-  P::::P           o::::o     o::::o      s::::::s         t:::::t                             E:::::E                  x::::::::x      p:::::p     p:::::p l::::l o::::o     o::::o i::::i      t:::::t          
-  P::::P           o::::o     o::::ossssss   s:::::s       t:::::t    tttttt                   E:::::E       EEEEEE    x::::::::::x     p:::::p    p::::::p l::::l o::::o     o::::o i::::i      t:::::t    tttttt
-PP::::::PP         o:::::ooooo:::::os:::::ssss::::::s      t::::::tttt:::::t                 EE::::::EEEEEEEE:::::E   x:::::xx:::::x    p:::::ppppp:::::::pl::::::lo:::::ooooo:::::oi::::::i     t::::::tttt:::::t
-P::::::::P         o:::::::::::::::os::::::::::::::s       tt::::::::::::::t                 E::::::::::::::::::::E  x:::::x  x:::::x   p::::::::::::::::p l::::::lo:::::::::::::::oi::::::i     tt::::::::::::::t
-P::::::::P          oo:::::::::::oo  s:::::::::::ss          tt:::::::::::tt                 E::::::::::::::::::::E x:::::x    x:::::x  p::::::::::::::pp  l::::::l oo:::::::::::oo i::::::i       tt:::::::::::tt
-PPPPPPPPPP            ooooooooooo     sssssssssss              ttttttttttt                   EEEEEEEEEEEEEEEEEEEEEExxxxxxx      xxxxxxx p::::::pppppppp    llllllll   ooooooooooo   iiiiiiii         ttttttttttt  
-                                                                                                                                        p:::::p                                                                   
-                                                                                                                                        p:::::p                                                                   
-                                                                                                                                       p:::::::p                                                                  
-                                                                                                                                       p:::::::p                                                                  
-                                                                                                                                       p:::::::p                                                                  
-                                                                                                                                       ppppppppp                                                                  
-                                                                                                                                                                                                                  
+
+______            _            _____              _         _  _   
+| ___ \          | |          |  ___|            | |       (_)| |  
+| |_/ /___   ___ | |_  ______ | |__ __  __ _ __  | |  ___   _ | |_ 
+|  __// _ \ / __|| __||______||  __|\ \/ /| '_ \ | | / _ \ | || __|
+| |  | (_) |\__ \| |_         | |___ >  < | |_) || || (_) || || |_ 
+\_|   \___/ |___/ \__|        \____//_/\_\| .__/ |_| \___/ |_| \__|
+                                          | |                      
+                                          |_|                      
 
     '''
 
@@ -460,31 +412,16 @@ Information Gathering Tools Classes
 class informationGatheringMenu:
     menuLogo = '''
     
-                                                                                                                     
-                                                                                                                     
-IIIIIIIIII                   ffffffffffffffff                                         GGGGGGGGGGGGG                  
-I::::::::I                  f::::::::::::::::f                                     GGG::::::::::::G                  
-I::::::::I                 f::::::::::::::::::f                                  GG:::::::::::::::G                  
-II::::::II                 f::::::fffffff:::::f                                 G:::::GGGGGGGG::::G                  
-  I::::Innnn  nnnnnnnn     f:::::f       ffffffooooooooooo                     G:::::G       GGGGGG  aaaaaaaaaaaaa   
-  I::::In:::nn::::::::nn   f:::::f           oo:::::::::::oo                  G:::::G                a::::::::::::a  
-  I::::In::::::::::::::nn f:::::::ffffff    o:::::::::::::::o                 G:::::G                aaaaaaaaa:::::a 
-  I::::Inn:::::::::::::::nf::::::::::::f    o:::::ooooo:::::o --------------- G:::::G    GGGGGGGGGG           a::::a 
-  I::::I  n:::::nnnn:::::nf::::::::::::f    o::::o     o::::o -:::::::::::::- G:::::G    G::::::::G    aaaaaaa:::::a 
-  I::::I  n::::n    n::::nf:::::::ffffff    o::::o     o::::o --------------- G:::::G    GGGGG::::G  aa::::::::::::a 
-  I::::I  n::::n    n::::n f:::::f          o::::o     o::::o                 G:::::G        G::::G a::::aaaa::::::a 
-  I::::I  n::::n    n::::n f:::::f          o::::o     o::::o                  G:::::G       G::::Ga::::a    a:::::a 
-II::::::IIn::::n    n::::nf:::::::f         o:::::ooooo:::::o                   G:::::GGGGGGGG::::Ga::::a    a:::::a 
-I::::::::In::::n    n::::nf:::::::f         o:::::::::::::::o                    GG:::::::::::::::Ga:::::aaaa::::::a 
-I::::::::In::::n    n::::nf:::::::f          oo:::::::::::oo                       GGG::::::GGG:::G a::::::::::aa:::a
-IIIIIIIIIInnnnnn    nnnnnnfffffffff            ooooooooooo                            GGGGGG   GGGG  aaaaaaaaaa  aaaa
-                                                                                                                     
-                                                                                                                     
-                                                                                                                     
-                                                                                                                     
-                                                                                                                     
-                                                                                                                     
-                                                                                                                     
+
+{__{___     {__{________  {____              {____       {_       
+{__{_ {__   {__{__      {__    {__         {_    {__    {_ __     
+{__{__ {__  {__{__    {__        {__      {__          {_  {__    
+{__{__  {__ {__{______{__        {__{_____{__         {__   {__   
+{__{__   {_ {__{__    {__        {__      {__   {____{______ {__  
+{__{__    {_ __{__      {__     {__        {__    {_{__       {__ 
+{__{__      {__{__        {____             {_____ {__         {__
+                                                                  
+                                                                       
 
     '''
 
@@ -533,30 +470,16 @@ IIIIIIIIIInnnnnn    nnnnnnfffffffff            ooooooooooo                      
 class nmap:
     nmapLogo = '''
     
-                                                                                     
-                                                                                     
-NNNNNNNN        NNNNNNNN                                                             
-N:::::::N       N::::::N                                                             
-N::::::::N      N::::::N                                                             
-N:::::::::N     N::::::N                                                             
-N::::::::::N    N::::::N   mmmmmmm    mmmmmmm     aaaaaaaaaaaaa  ppppp   ppppppppp   
-N:::::::::::N   N::::::N mm:::::::m  m:::::::mm   a::::::::::::a p::::ppp:::::::::p  
-N:::::::N::::N  N::::::Nm::::::::::mm::::::::::m  aaaaaaaaa:::::ap:::::::::::::::::p 
-N::::::N N::::N N::::::Nm::::::::::::::::::::::m           a::::app::::::ppppp::::::p
-N::::::N  N::::N:::::::Nm:::::mmm::::::mmm:::::m    aaaaaaa:::::a p:::::p     p:::::p
-N::::::N   N:::::::::::Nm::::m   m::::m   m::::m  aa::::::::::::a p:::::p     p:::::p
-N::::::N    N::::::::::Nm::::m   m::::m   m::::m a::::aaaa::::::a p:::::p     p:::::p
-N::::::N     N:::::::::Nm::::m   m::::m   m::::ma::::a    a:::::a p:::::p    p::::::p
-N::::::N      N::::::::Nm::::m   m::::m   m::::ma::::a    a:::::a p:::::ppppp:::::::p
-N::::::N       N:::::::Nm::::m   m::::m   m::::ma:::::aaaa::::::a p::::::::::::::::p 
-N::::::N        N::::::Nm::::m   m::::m   m::::m a::::::::::aa:::ap::::::::::::::pp  
-NNNNNNNN         NNNNNNNmmmmmm   mmmmmm   mmmmmm  aaaaaaaaaa  aaaap::::::pppppppp    
-                                                                  p:::::p            
-                                                                  p:::::p            
-                                                                 p:::::::p           
-                                                                 p:::::::p           
-                                                                 p:::::::p           
-                                                                 ppppppppp           
+
+                                                   
+    _/      _/                                     
+   _/_/    _/  _/_/_/  _/_/      _/_/_/  _/_/_/    
+  _/  _/  _/  _/    _/    _/  _/    _/  _/    _/   
+ _/    _/_/  _/    _/    _/  _/    _/  _/    _/    
+_/      _/  _/    _/    _/    _/_/_/  _/_/_/       
+                                     _/            
+                                    _/             
+ 
                                                                                      
 
     '''
@@ -593,8 +516,8 @@ NNNNNNNN         NNNNNNNmmmmmm   mmmmmm   mmmmmm  aaaaaaaaaa  aaaap::::::ppppppp
         print(self.nmapLogo)
         print("   Nmap scan for: %s\n" % target)
         print("   {1}--Simple Scan [-sV]")
-        print("   {2}--Port Scan [-Pn]")
-        print("   {3}--Operating System Detection [-A]\n")
+        print("   {2}--Firewall Scan [-Pn]")
+        print("   {3}--Aggressive Scan [-A]\n")
         print("   {99}-Return to information gathering menu \n")
         response = raw_input("nmap ~# ")
         clearScr()
@@ -647,31 +570,15 @@ class setoolkit:
 class host2ip:
     host2ipLogo = '''
    
-                                                                                                                                      
-                                                                                                                                      
-HHHHHHHHH     HHHHHHHHH     OOOOOOOOO        SSSSSSSSSSSSSSS TTTTTTTTTTTTTTTTTTTTTTT 222222222222222    IIIIIIIIIIPPPPPPPPPPPPPPPPP   
-H:::::::H     H:::::::H   OO:::::::::OO    SS:::::::::::::::ST:::::::::::::::::::::T2:::::::::::::::22  I::::::::IP::::::::::::::::P  
-H:::::::H     H:::::::H OO:::::::::::::OO S:::::SSSSSS::::::ST:::::::::::::::::::::T2::::::222222:::::2 I::::::::IP::::::PPPPPP:::::P 
-HH::::::H     H::::::HHO:::::::OOO:::::::OS:::::S     SSSSSSST:::::TT:::::::TT:::::T2222222     2:::::2 II::::::IIPP:::::P     P:::::P
-  H:::::H     H:::::H  O::::::O   O::::::OS:::::S            TTTTTT  T:::::T  TTTTTT            2:::::2   I::::I    P::::P     P:::::P
-  H:::::H     H:::::H  O:::::O     O:::::OS:::::S                    T:::::T                    2:::::2   I::::I    P::::P     P:::::P
-  H::::::HHHHH::::::H  O:::::O     O:::::O S::::SSSS                 T:::::T                 2222::::2    I::::I    P::::PPPPPP:::::P 
-  H:::::::::::::::::H  O:::::O     O:::::O  SS::::::SSSSS            T:::::T            22222::::::22     I::::I    P:::::::::::::PP  
-  H:::::::::::::::::H  O:::::O     O:::::O    SSS::::::::SS          T:::::T          22::::::::222       I::::I    P::::PPPPPPPPP    
-  H::::::HHHHH::::::H  O:::::O     O:::::O       SSSSSS::::S         T:::::T         2:::::22222          I::::I    P::::P            
-  H:::::H     H:::::H  O:::::O     O:::::O            S:::::S        T:::::T        2:::::2               I::::I    P::::P            
-  H:::::H     H:::::H  O::::::O   O::::::O            S:::::S        T:::::T        2:::::2               I::::I    P::::P            
-HH::::::H     H::::::HHO:::::::OOO:::::::OSSSSSSS     S:::::S      TT:::::::TT      2:::::2       222222II::::::IIPP::::::PP          
-H:::::::H     H:::::::H OO:::::::::::::OO S::::::SSSSSS:::::S      T:::::::::T      2::::::2222222:::::2I::::::::IP::::::::P          
-H:::::::H     H:::::::H   OO:::::::::OO   S:::::::::::::::SS       T:::::::::T      2::::::::::::::::::2I::::::::IP::::::::P          
-HHHHHHHHH     HHHHHHHHH     OOOOOOOOO      SSSSSSSSSSSSSSS         TTTTTTTTTTT      22222222222222222222IIIIIIIIIIPPPPPPPPPP          
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                      
+    
+  _   _     U  ___ u  ____     _____    ____               ____    
+ |'| |'|     \/"_ \/ / __"| u |_ " _|  |___"\     ___    U|  _"\ u 
+/| |_| |\    | | | |<\___ \/    | |    U __) |   |_"_|   \| |_) |/ 
+U|  _  |u.-,_| |_| | u___) |   /| |\   \/ __/ \   | |     |  __/   
+ |_| |_|  \_)-\___/  |____/>> u |_|U   |_____|u U/| |\u   |_|      
+ //   \\       \\     )(  (__)_// \\_  <<  //.-,_|___|_,-.||>>_    
+(_") ("_)     (__)   (__)    (__) (__)(__)(__)\_)-' '-(_/(__)__)   
+                                                                                                                                  
 
     '''
 
@@ -687,30 +594,14 @@ HHHHHHHHH     HHHHHHHHH     OOOOOOOOO      SSSSSSSSSSSSSSS         TTTTTTTTTTT  
 class wpscan:
     wpscanLogo = '''
     
-                                                                                                                                                                
-                                                                                                                                                                
-WWWWWWWW                           WWWWWWWWPPPPPPPPPPPPPPPPP      SSSSSSSSSSSSSSS         CCCCCCCCCCCCC               AAA               NNNNNNNN        NNNNNNNN
-W::::::W                           W::::::WP::::::::::::::::P   SS:::::::::::::::S     CCC::::::::::::C              A:::A              N:::::::N       N::::::N
-W::::::W                           W::::::WP::::::PPPPPP:::::P S:::::SSSSSS::::::S   CC:::::::::::::::C             A:::::A             N::::::::N      N::::::N
-W::::::W                           W::::::WPP:::::P     P:::::PS:::::S     SSSSSSS  C:::::CCCCCCCC::::C            A:::::::A            N:::::::::N     N::::::N
- W:::::W           WWWWW           W:::::W   P::::P     P:::::PS:::::S             C:::::C       CCCCCC           A:::::::::A           N::::::::::N    N::::::N
-  W:::::W         W:::::W         W:::::W    P::::P     P:::::PS:::::S            C:::::C                        A:::::A:::::A          N:::::::::::N   N::::::N
-   W:::::W       W:::::::W       W:::::W     P::::PPPPPP:::::P  S::::SSSS         C:::::C                       A:::::A A:::::A         N:::::::N::::N  N::::::N
-    W:::::W     W:::::::::W     W:::::W      P:::::::::::::PP    SS::::::SSSSS    C:::::C                      A:::::A   A:::::A        N::::::N N::::N N::::::N
-     W:::::W   W:::::W:::::W   W:::::W       P::::PPPPPPPPP        SSS::::::::SS  C:::::C                     A:::::A     A:::::A       N::::::N  N::::N:::::::N
-      W:::::W W:::::W W:::::W W:::::W        P::::P                   SSSSSS::::S C:::::C                    A:::::AAAAAAAAA:::::A      N::::::N   N:::::::::::N
-       W:::::W:::::W   W:::::W:::::W         P::::P                        S:::::SC:::::C                   A:::::::::::::::::::::A     N::::::N    N::::::::::N
-        W:::::::::W     W:::::::::W          P::::P                        S:::::S C:::::C       CCCCCC    A:::::AAAAAAAAAAAAA:::::A    N::::::N     N:::::::::N
-         W:::::::W       W:::::::W         PP::::::PP          SSSSSSS     S:::::S  C:::::CCCCCCCC::::C   A:::::A             A:::::A   N::::::N      N::::::::N
-          W:::::W         W:::::W          P::::::::P          S::::::SSSSSS:::::S   CC:::::::::::::::C  A:::::A               A:::::A  N::::::N       N:::::::N
-           W:::W           W:::W           P::::::::P          S:::::::::::::::SS      CCC::::::::::::C A:::::A                 A:::::A N::::::N        N::::::N
-            WWW             WWW            PPPPPPPPPP           SSSSSSSSSSSSSSS           CCCCCCCCCCCCCAAAAAAA                   AAAAAAANNNNNNNN         NNNNNNN
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                
+    
+               ____     ____      ____     _      _   _     
+ __        __U|  _"\ u / __"| uU /"___|U  /"\  u | \ |"|    
+ \"\      /"/\| |_) |/<\___ \/ \| | u   \/ _ \/ <|  \| |>   
+ /\ \ /\ / /\ |  __/   u___) |  | |/__  / ___ \ U| |\  |u   
+U  \ V  V /  U|_|      |____/>>  \____|/_/   \_\ |_| \_|    
+.-,_\ /\ /_,-.||>>_     )(  (__)_// \\  \\    >> ||   \\,-. 
+ \_)-'  '-(_/(__)__)   (__)    (__)(__)(__)  (__)(_")  (_/  
                                                                                                                                                                 
 
     '''
@@ -860,30 +751,15 @@ class XSStrike:
 class doork:
     doorkLogo = '''
     
-                                                                                                   
-                                                                                                   
-DDDDDDDDDDDDD             OOOOOOOOO          OOOOOOOOO     RRRRRRRRRRRRRRRRR   KKKKKKKKK    KKKKKKK
-D::::::::::::DDD        OO:::::::::OO      OO:::::::::OO   R::::::::::::::::R  K:::::::K    K:::::K
-D:::::::::::::::DD    OO:::::::::::::OO  OO:::::::::::::OO R::::::RRRRRR:::::R K:::::::K    K:::::K
-DDD:::::DDDDD:::::D  O:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::RK:::::::K   K::::::K
-  D:::::D    D:::::D O::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::RKK::::::K  K:::::KKK
-  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  K:::::K K:::::K   
-  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R   K::::::K:::::K    
-  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R:::::::::::::RR    K:::::::::::K     
-  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R   K:::::::::::K     
-  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  K::::::K:::::K    
-  D:::::D     D:::::DO:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  K:::::K K:::::K   
-  D:::::D    D:::::D O::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::RKK::::::K  K:::::KKK
-DDD:::::DDDDD:::::D  O:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::RK:::::::K   K::::::K
-D:::::::::::::::DD    OO:::::::::::::OO  OO:::::::::::::OO R::::::R     R:::::RK:::::::K    K:::::K
-D::::::::::::DDD        OO:::::::::OO      OO:::::::::OO   R::::::R     R:::::RK:::::::K    K:::::K
-DDDDDDDDDDDDD             OOOOOOOOO          OOOOOOOOO     RRRRRRRR     RRRRRRRKKKKKKKKK    KKKKKKK
-                                                                                                   
-                                                                                                   
-                                                                                                   
-                                                                                                   
-                                                                                                   
-                                                                                                   
+
+  ____      U  ___ u   U  ___ u   ____      _  __    
+ |  _"\      \/"_ \/    \/"_ \/U |  _"\ u  |"|/ /    
+/| | | |     | | | |    | | | | \| |_) |/  | ' /     
+U| |_| |\.-,_| |_| |.-,_| |_| |  |  _ <  U/| . \\u   
+ |____/ u \_)-\___/  \_)-\___/   |_| \_\   |_|\_\    
+  |||_         \\         \\     //   \\_,-,>> \\,-. 
+ (__)_)       (__)       (__)   (__)  (__)\.)   (_/  
+                                       
                                                                                                    
 
     '''
@@ -968,31 +844,13 @@ Password Attack Tools Classes
 class passwordAttacksMenu:
     menuLogo = '''
     
-                                                                                                                                                
-                                                                                                                                                
-PPPPPPPPPPPPPPPPP        AAA                 SSSSSSSSSSSSSSS    SSSSSSSSSSSSSSS WWWWWWWW                           WWWWWWWWDDDDDDDDDDDDD        
-P::::::::::::::::P      A:::A              SS:::::::::::::::S SS:::::::::::::::SW::::::W                           W::::::WD::::::::::::DDD     
-P::::::PPPPPP:::::P    A:::::A            S:::::SSSSSS::::::SS:::::SSSSSS::::::SW::::::W                           W::::::WD:::::::::::::::DD   
-PP:::::P     P:::::P  A:::::::A           S:::::S     SSSSSSSS:::::S     SSSSSSSW::::::W                           W::::::WDDD:::::DDDDD:::::D  
-  P::::P     P:::::P A:::::::::A          S:::::S            S:::::S             W:::::W           WWWWW           W:::::W   D:::::D    D:::::D 
-  P::::P     P:::::PA:::::A:::::A         S:::::S            S:::::S              W:::::W         W:::::W         W:::::W    D:::::D     D:::::D
-  P::::PPPPPP:::::PA:::::A A:::::A         S::::SSSS          S::::SSSS            W:::::W       W:::::::W       W:::::W     D:::::D     D:::::D
-  P:::::::::::::PPA:::::A   A:::::A         SS::::::SSSSS      SS::::::SSSSS        W:::::W     W:::::::::W     W:::::W      D:::::D     D:::::D
-  P::::PPPPPPPPP A:::::A     A:::::A          SSS::::::::SS      SSS::::::::SS       W:::::W   W:::::W:::::W   W:::::W       D:::::D     D:::::D
-  P::::P        A:::::AAAAAAAAA:::::A            SSSSSS::::S        SSSSSS::::S       W:::::W W:::::W W:::::W W:::::W        D:::::D     D:::::D
-  P::::P       A:::::::::::::::::::::A                S:::::S            S:::::S       W:::::W:::::W   W:::::W:::::W         D:::::D     D:::::D
-  P::::P      A:::::AAAAAAAAAAAAA:::::A               S:::::S            S:::::S        W:::::::::W     W:::::::::W          D:::::D    D:::::D 
-PP::::::PP   A:::::A             A:::::A  SSSSSSS     S:::::SSSSSSSS     S:::::S         W:::::::W       W:::::::W         DDD:::::DDDDD:::::D  
-P::::::::P  A:::::A               A:::::A S::::::SSSSSS:::::SS::::::SSSSSS:::::S          W:::::W         W:::::W          D:::::::::::::::DD   
-P::::::::P A:::::A                 A:::::AS:::::::::::::::SS S:::::::::::::::SS            W:::W           W:::W           D::::::::::::DDD     
-PPPPPPPPPPAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS    SSSSSSSSSSSSSSS               WWW             WWW            DDDDDDDDDDDDD        
-                                                                                                                                                
-                                                                                                                                                
-                                                                                                                                                
-                                                                                                                                                
-                                                                                                                                                
-                                                                                                                                                
-                                                                                                                                                
+  ____       _      ____    ____                   ____    
+U|  _"\ uU  /"\  u / __"| u/ __"| u  __        __ |  _"\   
+\| |_) |/ \/ _ \/ <\___ \/<\___ \/   \"\      /"//| | | |  
+ |  __/   / ___ \  u___) | u___) |   /\ \ /\ / /\U| |_| |\ 
+ |_|     /_/   \_\ |____/>>|____/>> U  \ V  V /  U|____/ u 
+ ||>>_    \\    >>  )(  (__))(  (__).-,_\ /\ /_,-. |||_    
+(__)__)  (__)  (__)(__)    (__)      \_)-'  '-(_/ (__)_)                                                                                              
 
     '''
 
