@@ -87,28 +87,17 @@ yes = config.get('sayahac', 'yes').split()
 color_random=[color.HEADER,color.IMPORTANT,color.NOTICE,color.OKBLUE,color.OKGREEN,color.WARNING,color.RED,color.END,color.UNDERLINE,color.LOGGING]
 random.shuffle(color_random) 
 fsocietylogo = color_random[0] + '''
-                                                                                                                                  
-   SSSSSSSSSSSSSSS                                                        hhhhhhh                                                  
- SS:::::::::::::::S                                                       h:::::h                                                  
-S:::::SSSSSS::::::S                                                       h:::::h                                                  
-S:::::S     SSSSSSS                                                       h:::::h                                                  
-S:::::S              aaaaaaaaaaaaayyyyyyy           yyyyyyyaaaaaaaaaaaaa   h::::h hhhhh         aaaaaaaaaaaaa      cccccccccccccccc
-S:::::S              a::::::::::::ay:::::y         y:::::y a::::::::::::a  h::::hh:::::hhh      a::::::::::::a   cc:::::::::::::::c
- S::::SSSS           aaaaaaaaa:::::ay:::::y       y:::::y  aaaaaaaaa:::::a h::::::::::::::hh    aaaaaaaaa:::::a c:::::::::::::::::c
-  SS::::::SSSSS               a::::a y:::::y     y:::::y            a::::a h:::::::hhh::::::h            a::::ac:::::::cccccc:::::c
-    SSS::::::::SS      aaaaaaa:::::a  y:::::y   y:::::y      aaaaaaa:::::a h::::::h   h::::::h    aaaaaaa:::::ac::::::c     ccccccc
-       SSSSSS::::S   aa::::::::::::a   y:::::y y:::::y     aa::::::::::::a h:::::h     h:::::h  aa::::::::::::ac:::::c             
-            S:::::S a::::aaaa::::::a    y:::::y:::::y     a::::aaaa::::::a h:::::h     h:::::h a::::aaaa::::::ac:::::c             
-            S:::::Sa::::a    a:::::a     y:::::::::y     a::::a    a:::::a h:::::h     h:::::ha::::a    a:::::ac::::::c     ccccccc
-SSSSSSS     S:::::Sa::::a    a:::::a      y:::::::y      a::::a    a:::::a h:::::h     h:::::ha::::a    a:::::ac:::::::cccccc:::::c
-S::::::SSSSSS:::::Sa:::::aaaa::::::a       y:::::y       a:::::aaaa::::::a h:::::h     h:::::ha:::::aaaa::::::a c:::::::::::::::::c
-S:::::::::::::::SS  a::::::::::aa:::a     y:::::y         a::::::::::aa:::ah:::::h     h:::::h a::::::::::aa:::a cc:::::::::::::::c
- SSSSSSSSSSSSSSS     aaaaaaaaaa  aaaa    y:::::y           aaaaaaaaaa  aaaahhhhhhh     hhhhhhh  aaaaaaaaaa  aaaa   cccccccccccccccc
-                                        y:::::y                                                                                    
-                                       y:::::y                                                                                     
-                                      y:::::y                                                                                      
-                                     y:::::y                                                                                       
-                                    yyyyyyy                                                                                        
+  
+   _     _      _     _      _     _      _     _      _     _      _     _      _     _   
+  (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)  
+   / ._. \      / ._. \      / ._. \      / ._. \      / ._. \      / ._. \      / ._. \   
+ __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__ 
+(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)
+   || S ||      || A ||      || Y ||      || A ||      || H ||      || A ||      || C ||   
+ _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._ 
+(.-./`-`\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)
+ `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-' 
+                                                                               
                                             
         '''
 sayahacPrompt = "sayahac ~# "
@@ -128,23 +117,11 @@ computer software or hardware or telecommunications equipment;
 
 mrrobot4 = color.NOTICE + '''
 Hello,
-
-As we all know, Mr. Robot 4.0 is comming out - the end of Mr. Robot.
-
-We will update to python3.7 & add all of the new hacking tool of 4.0 later this year
-There will be no more updates after the show is done.
-This is to keep cannon to the show.))
-
-Thank you for all the sourport over the years, the fsociety team thanks you!
-Feel free to join the NEW DISCORD!!!
-Anything Mr. Robot will be on the server!
-
-[ https://discord.gg/xB87X9z ]
+        Welcome to sayahac framework
 
 
-
-Thanks for reading,
-Zachary, CRO-THEHACKER - Dev'''
+Thanks you,
+'''
 
 '''
 Starts Menu Classes
