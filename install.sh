@@ -29,7 +29,7 @@ if [ "$PREFIX" = "/data/data/com.termux/files/usr" ]; then
     TERMUX=true
 
     pkg install -y git python2
-elif [ "$(uname)" = "Darwin" ]; then
+elif [ "$(uname)" = "sayahac" ]; then
     INSTALL_DIR="/usr/local/sayahac"
     BIN_DIR="/usr/local/bin/"
     BASH_PATH="/bin/bash"
