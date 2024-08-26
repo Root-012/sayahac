@@ -175,7 +175,6 @@ class sayahac:
        {7}--Private Web Hacking
        {8}--Post Exploitation
        {0}--INSTALL & UPDATE
-       {11}-CONTRIBUTORS
        {99}-EXIT\n
      ''')
         choice = raw_input(sayahacPrompt)
@@ -213,27 +212,6 @@ class sayahac:
                 pass
         self.completed()
 
-    def githubContributors(self):
-        clearScr()
-        print('''
-     
- _______  _______  _       _________ _______ _________ ______           _________ _______  _______  _______ 
-(  ____ \(  ___  )( (    /|\__   __/(  ____ )\__   __/(  ___ \ |\     /|\__   __/(  ___  )(  ____ )(  ____ \
-| (    \/| (   ) ||  \  ( |   ) (   | (    )|   ) (   | (   ) )| )   ( |   ) (   | (   ) || (    )|| (    \/
-| |      | |   | ||   \ | |   | |   | (____)|   | |   | (__/ / | |   | |   | |   | |   | || (____)|| (_____ 
-| |      | |   | || (\ \) |   | |   |     __)   | |   |  __ (  | |   | |   | |   | |   | ||     __)(_____  )
-| |      | |   | || | \   |   | |   | (\ (      | |   | (  \ \ | |   | |   | |   | |   | || (\ (         ) |
-| (____/\| (___) || )  \  |   | |   | ) \ \_____) (___| )___) )| (___) |   | |   | (___) || ) \ \__/\____) |
-(_______/(_______)|/    )_)   )_(   |/   \__/\_______/|/ \___/ (_______)   )_(   (_______)|/   \__/\_______)
-                                                                                                            
-
-     ''')
-        contributorsURL = 'https://github.com/Root-012/sayahac.git'
-        jsonResponseList = json.loads(urllib2.urlopen(contributorsURL).read())
-        for dictionary in jsonResponseList:
-            print("   * %s" % dictionary['login'])
-        print('\n')
-
     def createFolders(self):
         if not os.path.isdir(toolDir):
             os.makedirs(toolDir)
@@ -246,7 +224,7 @@ class sayahac:
 
     def update(self):
         os.system("git clone --depth=1 https://github.com/Root-012/sayahac.git")
-        os.system("cd fsociety && bash ./update.sh")
+        os.system("cd sayahac && bash ./update.sh")
         os.system("sayahac")
 
 
