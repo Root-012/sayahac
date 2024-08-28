@@ -1049,13 +1049,13 @@ class ReconNGTool:
 
     def run(self):
         clearScr()
-        print(self.reconLogo)
+        print(self.recon_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.reconLogo)
+        print(self.recon_logo)
         print("   Recon-ng Intelligence Gathering for: %s\n" % target)
         print("   {1}--Basic Domain Info Gathering")
         print("   {2}--Whois Lookup")
