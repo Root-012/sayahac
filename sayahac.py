@@ -1039,7 +1039,8 @@ class ReconNGTool:
             self.run()
 
     def installed(self):
-        return os.path.isfile(self.installDir + "/recon-ng")
+        return (os.path.isfile("/usr/bin/recon-ng") or os.path.isfile("/usr/local/bin/recon-ng"))
+
 
     def install(self):
         # Clone the Recon-ng repository
