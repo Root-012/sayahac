@@ -911,7 +911,7 @@ class informationGatheringMenu:
         print("  {4}--WPScan")
         print("  {5}--CMSmap")
         print("  {6}--XSStrike")
-        print("  {7}--Doork")
+        print("  {7}--Google_Dorks")
         print("  {8}--Crips\n  ")
         print("  {99}-Back To Main Menu \n")
         choice2 = raw_input(sayahacPrompt)
@@ -1715,6 +1715,14 @@ import os
 from time import strftime, gmtime
 
 class AircrackNGTool:
+    aircrack_logo = """
+   ___       _                  _     _   _ 
+  / _ \     | |                (_)   | | | |
+ / /_\ \ ___| |_ _   _ _ __ ___  _  __| | | |
+ |  _  |/ __| __| | | | '_ ` _ \| |/ _` | | |
+ | | | | (__| |_| |_| | | | | | | | (_| | |_|
+ \_| |_/\___|\__|\__,_|_| |_| |_|_|\__,_| (_)
+"""
     def __init__(self):
         self.installDir = toolDir + "aircrack-ng"
         self.gitRepo = "https://github.com/aircrack-ng/aircrack-ng.git"
@@ -1792,18 +1800,6 @@ def clearScr():
 toolDir = "/opt/tools/"  # Change to appropriate directory
 continuePrompt = "Press Enter to continue..."
 
-# ASCII logo placeholder for Aircrack-ng
-aircrack_logo = """
-   ___       _                  _     _   _ 
-  / _ \     | |                (_)   | | | |
- / /_\ \ ___| |_ _   _ _ __ ___  _  __| | | |
- |  _  |/ __| __| | | | '_ ` _ \| |/ _` | | |
- | | | | (__| |_| |_| | | | | | | | (_| | |_|
- \_| |_/\___|\__|\__,_|_| |_| |_|_|\__,_| (_)
-"""
-
-# Initialize the tool
-AircrackNGTool().aircrackLogo = aircrack_logo
 
 
 class bluepot:
