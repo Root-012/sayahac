@@ -1281,6 +1281,11 @@ class XSStrike:
 
 
 class GoogleDorkTool:
+    import os
+import requests
+from bs4 import BeautifulSoup
+
+class GoogleDorkTool:
     google_dork_logo = """
   _____            _       _     
  / ____|          (_)     | |    
@@ -1289,28 +1294,29 @@ class GoogleDorkTool:
 | |__| |  __/ (_) | | | | | | | |
  \_____|\___|\___/|_|_| |_|_| |_|
 """
+    
     def __init__(self):
         self.targetPrompt = "   Enter your Google Dork query: "
         self.dorkPrompt = "   Enter the target domain (e.g., example.com): "
-
+        self.continuePrompt = "Press Enter to continue..."
         self.run()
 
     def run(self):
         clearScr()
-        print(self.googleDorkLogo)
-        target = raw_input(self.dorkPrompt)
+        print(self.google_dork_logo)
+        target = input(self.dorkPrompt)  # Changed raw_input() to input()
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.googleDorkLogo)
+        print(self.google_dork_logo)
         print("   Google Dorking for domain: %s\n" % target)
         print("   {1}--Search for Indexes (intitle:index.of)")
         print("   {2}--Search for Config Files (ext:xml | ext:conf)")
         print("   {3}--Search for Login Pages (inurl:admin)")
         print("   {4}--Search for SQL Errors (intext:\"sql syntax\")")
         print("   {99}-Return to previous menu \n")
-        response = raw_input("google-dork ~# ")
+        response = input("google-dork ~# ")  # Changed raw_input() to input()
         clearScr()
         try:
             if response == "1":
@@ -1349,14 +1355,11 @@ class GoogleDorkTool:
                 print(actual_link)
         
         print("\n--- End of Results ---\n")
-        raw_input(continuePrompt)
+        input(self.continuePrompt)  # Changed raw_input() to input()
 
-# Helper functions
+# Helper function
 def clearScr():
-    os.system('clear')
-
-toolDir = "/opt/tools/"  # Change to appropriate directory
-continuePrompt = "Press Enter to continue..."
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
