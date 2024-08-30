@@ -39,6 +39,9 @@ import threading
 import base64
 import time
 import ConfigParser
+import os
+import requests
+from bs4 import BeautifulSoup
 from sys import argv
 from commands import *
 from getpass import getpass
@@ -367,13 +370,13 @@ class DrupalExploitTool:
 
     def run(self):
         clearScr()
-        print(self.drupalLogo)
+        print(self.drupal_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.drupalLogo)
+        print(self.drupal_logo)
         print("   Drupal Exploit for: %s\n" % target)
         print("   {1}--Check Vulnerability (CVE-2018-7600)")
         print("   {2}--Exploit RCE (Remote Code Execution)")
@@ -437,13 +440,13 @@ class InurlbrTool:
 
     def run(self):
         clearScr()
-        print(self.inurlbrLogo)
+        print(self.inurlbr_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.inurlbrLogo)
+        print(self.inurlbr_logo)
         print("   Inurlbr scan for: %s\n" % target)
         print("   {1}--Simple Scan (Basic search)")
         print("   {2}--Advanced Scan (Multiple search)")
@@ -504,13 +507,13 @@ class WPExploitTool:
 
     def run(self):
         clearScr()
-        print(self.wpexploitLogo)
+        print(self.wpexploit_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.wpexploitLogo)
+        print(self.wpexploit_logo)
         print("   WordPress Exploit Scan for: %s\n" % target)
         print("   {1}--Basic Vulnerability Scan")
         print("   {2}--Enumerate Plugins")
@@ -577,13 +580,13 @@ class ArachniTool:
 
     def run(self):
         clearScr()
-        print(self.arachniLogo)
+        print(self.arachni_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.arachniLogo)
+        print(self.arachni_logo)
         print("   Arachni Scan for: %s\n" % target)
         print("   {1}--Basic Scan")
         print("   {2}--Full Audit Scan")
@@ -651,13 +654,13 @@ class FuxploiderTool:
 
     def run(self):
         clearScr()
-        print(self.fuxploiderLogo)
+        print(self.fuxploider_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.fuxploiderLogo)
+        print(self.fuxploider_logo)
         print("   Fuxploider Scan for: %s\n" % target)
         print("   {1}--Basic File Upload Vulnerability Scan")
         print("   {2}--Advanced Scan with Extensions")
@@ -716,13 +719,13 @@ class NiktoTool:
 
     def run(self):
         clearScr()
-        print(self.niktoLogo)
+        print(self.nikto_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.niktoLogo)
+        print(self.nikto_logo)
         print("   Nikto Scan for Target: %s\n" % target)
         print("   {1}--Basic Scan")
         print("   {2}--Scan with Tuning Options")
@@ -791,13 +794,13 @@ class FiddlerTool:
 
     def run(self):
         clearScr()
-        print(self.fiddlerLogo)
+        print(self.fiddler_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.fiddlerLogo)
+        print(self.fiddler_logo)
         print("   Mitmproxy (Fiddler-like) for Target: %s\n" % (target if target else "All Traffic"))
         print("   {1}--Basic Intercept")
         print("   {2}--Log HTTP/HTTPS Traffic")
@@ -1281,11 +1284,6 @@ class XSStrike:
 
 
 class GoogleDorkTool:
-    import os
-import requests
-from bs4 import BeautifulSoup
-
-class GoogleDorkTool:
     google_dork_logo = """
   _____            _       _     
  / ____|          (_)     | |    
@@ -1670,13 +1668,13 @@ class KismetTool:
 
     def run(self):
         clearScr()
-        print(self.kismetLogo)
+        print(self.kismet_logo)
         interface = raw_input(self.targetPrompt)
         self.menu(interface)
 
     def menu(self, interface):
         clearScr()
-        print(self.kismetLogo)
+        print(self.kismet_logo)
         print("   Kismet Commands for Interface: %s\n" % interface)
         print("   {1}--Basic Network Scan")
         print("   {2}--Channel Hopping")
@@ -1749,13 +1747,13 @@ class AircrackNGTool:
 
     def run(self):
         clearScr()
-        print(self.aircrackLogo)
+        print(self.aircrack_logo)
         interface = raw_input(self.interfacePrompt)
         self.menu(interface)
 
     def menu(self, interface):
         clearScr()
-        print(self.aircrackLogo)
+        print(self.aircrack_logo)
         print("   Aircrack-ng Operations with Interface: %s\n" % interface)
         print("   {1}--Monitor Mode")
         print("   {2}--Capture Packets")
@@ -1991,13 +1989,13 @@ class ATSCANTool:
 
     def run(self):
         clearScr()
-        print(self.atscanLogo)
+        print(self.atscan_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.atscanLogo)
+        print(self.atscan_logo)
         print("   ATSCAN Operation for Target: %s\n" % target)
         print("   {1}--Basic Dorking Search")
         print("   {2}--Vulnerability Scan")
@@ -2074,13 +2072,13 @@ class CommixTool:
 
     def run(self):
         clearScr()
-        print(self.commixLogo)
+        print(self.commix_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.commixLogo)
+        print(self.commix_logo)
         print("   Commix Attack on Target: %s\n" % target)
         print("   {1}--Basic Command Injection Test")
         print("   {2}--OS Command Injection with Reverse Shell")
@@ -2238,13 +2236,13 @@ class SQLMapTool:
 
     def run(self):
         clearScr()
-        print(self.sqlmapLogo)
+        print(self.sqlmap_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.sqlmapLogo)
+        print(self.sqlmap_logo)
         print("   SQLMap Attack on Target: %s\n" % target)
         print("   {1}--Basic SQL Injection")
         print("   {2}--Enumerate Databases")
@@ -2435,13 +2433,13 @@ class ExploitDBTool:
 
     def run(self):
         clearScr()
-        print(self.exploitLogo)
+        print(self.exploit_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.exploitLogo)
+        print(self.exploit_logo)
         print("   Exploit-DB Search for: %s\n" % target)
         print("   {1}--Search for Exploits")
         print("   {2}--Search by Software Version")
@@ -2992,7 +2990,7 @@ def drupallist():
 
 def maine():
 
-    print minu
+    print maine
     choose = raw_input("choose a number: ")
     while True:
 
@@ -3223,7 +3221,7 @@ def check_wpsymposium(sites):
     for site in sites:
         try:
             if urllib2.urlopen(site + 'wp-symposium/server/file_upload_form.php').getcode() == 200:
-                wpsycmium.append(site)
+                wpsymposium.append(site)
         except:
             pass
 
