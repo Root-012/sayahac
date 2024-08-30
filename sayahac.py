@@ -42,6 +42,7 @@ import ConfigParser
 import os
 import requests
 from bs4 import BeautifulSoup
+from time import strftime, gmtime
 from sys import argv
 from commands import *
 from getpass import getpass
@@ -1283,27 +1284,27 @@ class XSStrike:
         os.system("python %s/xsstrike" % self.installDir)
 
 
+
+
 class GoogleDorkTool:
-   class GoogleDorkTool:
-    google_dork_logo = """
+    google_dork_logo = '''
   _____            _       _     
  / ____|          (_)     | |    
 | |  __  ___  ___  _ _ __ | |__  
 | | |_ |/ _ \/ _ \| | '_ \| '_ \ 
 | |__| |  __/ (_) | | | | | | | |
  \_____|\___|\___/|_|_| |_|_| |_|
-"""
-    
+    '''
+
     def __init__(self):
-        self.targetPrompt = "   Enter your Google Dork query: "
-        self.dorkPrompt = "   Enter the target domain (e.g., example.com): "
-        self.continuePrompt = "Press Enter to continue..."
+        self.targetPrompt = "   Enter Target Domain (e.g., example.com): "
+
         self.run()
 
     def run(self):
         clearScr()
         print(self.google_dork_logo)
-        target = raw_input(self.dorkPrompt)  # Using raw_input() for Python 2
+        target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
@@ -1315,21 +1316,22 @@ class GoogleDorkTool:
         print("   {3}--Search for Login Pages (inurl:admin)")
         print("   {4}--Search for SQL Errors (intext:\"sql syntax\")")
         print("   {99}-Return to previous menu \n")
-        response = raw_input("google-dork ~# ")  # Using raw_input() for Python 2
+        response = raw_input("google-dork ~# ")
         clearScr()
+        logPath = "logs/google-dork-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".log"
         try:
             if response == "1":
                 query = "intitle:index.of site:%s" % target
-                self.google_search(query)
+                self.google_search(query, logPath)
             elif response == "2":
                 query = "ext:xml OR ext:conf site:%s" % target
-                self.google_search(query)
+                self.google_search(query, logPath)
             elif response == "3":
                 query = "inurl:admin site:%s" % target
-                self.google_search(query)
+                self.google_search(query, logPath)
             elif response == "4":
                 query = "intext:\"sql syntax\" site:%s" % target
-                self.google_search(query)
+                self.google_search(query, logPath)
             elif response == "99":
                 pass
             else:
@@ -1337,28 +1339,36 @@ class GoogleDorkTool:
         except KeyboardInterrupt:
             self.menu(target)
 
-    def google_search(self, query):
+    def google_search(self, query, logPath):
         url = "https://www.google.com/search?q=" + query.replace(' ', '+')
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
-        response = requests.get(url, headers=headers)
         
+        response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
         search_results = soup.find_all('a')
 
-        print("\n--- Google Dork Results ---\n")
-        for link in search_results:
-            href = link.get('href')
-            if 'url?q=' in href and not 'webcache' in href:
-                actual_link = href.split('url?q=')[1].split('&sa=U')[0]
-                print(actual_link)
-        
-        print("\n--- End of Results ---\n")
-        raw_input(self.continuePrompt)  # Using raw_input() for Python 2
+        with open(logPath, 'w') as log_file:
+            print("\n--- Google Dork Results ---\n")
+            log_file.write("--- Google Dork Results ---\n")
+            for link in search_results:
+                href = link.get('href')
+                if 'url?q=' in href and not 'webcache' in href:
+                    actual_link = href.split('url?q=')[1].split('&sa=U')[0]
+                    print(actual_link)
+                    log_file.write(actual_link + '\n')
+            print("\n--- End of Results ---\n")
+            log_file.write("\n--- End of Results ---\n")
+
+        raw_input("Press Enter to continue...")
 
 # Helper function
 def clearScr():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+# Initialize the tool
+GoogleDorkTool()
+
 
 
 
