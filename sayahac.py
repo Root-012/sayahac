@@ -1284,6 +1284,7 @@ class XSStrike:
 
 
 class GoogleDorkTool:
+   class GoogleDorkTool:
     google_dork_logo = """
   _____            _       _     
  / ____|          (_)     | |    
@@ -1302,7 +1303,7 @@ class GoogleDorkTool:
     def run(self):
         clearScr()
         print(self.google_dork_logo)
-        target = input(self.dorkPrompt)  # Changed raw_input() to input()
+        target = raw_input(self.dorkPrompt)  # Using raw_input() for Python 2
         self.menu(target)
 
     def menu(self, target):
@@ -1314,7 +1315,7 @@ class GoogleDorkTool:
         print("   {3}--Search for Login Pages (inurl:admin)")
         print("   {4}--Search for SQL Errors (intext:\"sql syntax\")")
         print("   {99}-Return to previous menu \n")
-        response = input("google-dork ~# ")  # Changed raw_input() to input()
+        response = raw_input("google-dork ~# ")  # Using raw_input() for Python 2
         clearScr()
         try:
             if response == "1":
@@ -1353,12 +1354,11 @@ class GoogleDorkTool:
                 print(actual_link)
         
         print("\n--- End of Results ---\n")
-        input(self.continuePrompt)  # Changed raw_input() to input()
+        raw_input(self.continuePrompt)  # Using raw_input() for Python 2
 
 # Helper function
 def clearScr():
     os.system('cls' if os.name == 'nt' else 'clear')
-
 
 
 
