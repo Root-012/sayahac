@@ -217,7 +217,7 @@ class sniffingSpoofingMenu:
 \____/ |_| |_||_||_|  |_|  |_||_| |_| \__, |
                                        __/ |
                                       |___/ 
-                                                                                             gggggg       
+                                                                                                  
 
     '''
 
@@ -1521,13 +1521,13 @@ class JohnTheRipperTool:
 
     def run(self):
         clearScr()
-        print(self.johnLogo)
+        print(self.john_logo)
         target = raw_input(self.targetPrompt)
         self.menu(target)
 
     def menu(self, target):
         clearScr()
-        print(self.johnLogo)
+        print(self.john_logo)
         print("   John the Ripper Attack for Target: %s\n" % target)
         print("   {1}--Basic Crack")
         print("   {2}--Dictionary Attack")
