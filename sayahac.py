@@ -1344,21 +1344,30 @@ class GoogleDorkTool:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
         
-        response = requests.get(url, headers=headers)
-        soup = BeautifulSoup(response.text, "html.parser")
-        search_results = soup.find_all('a')
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()  # Check if request was successful
 
-        with open(logPath, 'w') as log_file:
-            print("\n--- Google Dork Results ---\n")
-            log_file.write("--- Google Dork Results ---\n")
-            for link in search_results:
-                href = link.get('href')
-                if 'url?q=' in href and not 'webcache' in href:
-                    actual_link = href.split('url?q=')[1].split('&sa=U')[0]
-                    print(actual_link)
-                    log_file.write(actual_link + '\n')
-            print("\n--- End of Results ---\n")
-            log_file.write("\n--- End of Results ---\n")
+            soup = BeautifulSoup(response.text, "html.parser")
+            search_results = soup.find_all('a')
+
+            if not search_results:
+                print("No results found or Google blocked the request.")
+                return
+
+            with open(logPath, 'w') as log_file:
+                print("\n--- Google Dork Results ---\n")
+                log_file.write("--- Google Dork Results ---\n")
+                for link in search_results:
+                    href = link.get('href')
+                    if 'url?q=' in href and not 'webcache' in href:
+                        actual_link = href.split('url?q=')[1].split('&sa=U')[0]
+                        print(actual_link)
+                        log_file.write(actual_link + '\n')
+                print("\n--- End of Results ---\n")
+                log_file.write("\n--- End of Results ---\n")
+        except requests.exceptions.RequestException as e:
+            print("An error occurred: %s" % e)
 
         raw_input("Press Enter to continue...")
 
