@@ -1366,8 +1366,6 @@ class GoogleDorkTool:
 def clearScr():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# Initialize the tool
-GoogleDorkTool()
 
 
 
