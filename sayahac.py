@@ -252,23 +252,23 @@ class sniffingSpoofingMenu:
 class ssls:
     
     def ssls():
-    print('''sslstrip is a MITM tool that implements Moxie Marlinspike's SSL stripping
-    attacks.
-    It requires Python 2.5 or newer, along with the 'twisted' python module.''')
-    if yesOrNo():
-        os.system("git clone --depth=1 https://github.com/moxie0/sslstrip.git")
-        os.system("apt-get install python-twisted-web")
-        os.system("python sslstrip/setup.py")
-    else:
-        sniffingSpoofingMenu.completed("SSlStrip")
+        print('''sslstrip is a MITM tool that implements Moxie Marlinspike's SSL stripping
+        attacks.
+        It requires Python 2.5 or newer, along with the 'twisted' python module.''')
+        if yesOrNo():
+            os.system("git clone --depth=1 https://github.com/moxie0/sslstrip.git")
+            os.system("apt-get install python-twisted-web")
+            os.system("python sslstrip/setup.py")
+        else:
+            sniffingSpoofingMenu.completed("SSlStrip")
 
 
 class pisher:
     
     def pisher():
-    os.system("wget http://pastebin.com/raw/DDVqWp4Z --output-document=pisher.py")
-    clearScr()
-    os.system("python pisher.py")
+        os.system("wget http://pastebin.com/raw/DDVqWp4Z --output-document=pisher.py")
+        clearScr()
+        os.system("python pisher.py")
 
 
 class smtpsend:
@@ -278,9 +278,9 @@ class smtpsend:
         self.__init__()
 
     def smtpsend():
-    os.system("wget http://pastebin.com/raw/Nz1GzWDS --output-document=smtp.py")
-    clearScr()
-    os.system("python smtp.py")
+        os.system("wget http://pastebin.com/raw/Nz1GzWDS --output-document=smtp.py")
+        clearScr()
+        os.system("python smtp.py")
 
 
 
