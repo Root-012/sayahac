@@ -2571,7 +2571,7 @@ def gravity():
 
 
 
-menuu = sayahac + '''
+menuu = fsocietylogo + '''
 
    {1}--Get all websites
    {2}--Get joomla websites
