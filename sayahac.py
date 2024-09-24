@@ -143,7 +143,7 @@ class sayahac:
     def __init__(self):
         clearScr()
         self.createFolders()
-        print (sayahac + color.RED + '''
+        print (color.RED + '''
        }--------------{+} Coded By Root-012 {+}--------------{
        }--------{+}  GitHub.com/Root-012/sayahac {+}--------{
     ''' + color.END + 
