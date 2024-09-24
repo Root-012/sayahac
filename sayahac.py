@@ -111,32 +111,33 @@ continuePrompt = "\nClick [Return] to continue"
 termsAndConditions = color.NOTICE + '''
 
 
-#	   ,-,--.    ,---.                    ,---.      ,--.-,,-,--,   ,---.        _,.----.   
-# 	,-.'-  _\ .--.'  \   ,--.-.  .-,--..--.'  \    /==/  /|=|  | .--.'  \     .' .' -   \  
-#	/==/_ ,_.' \==\-/\ \ /==/- / /=/_ / \==\-/\ \   |==|_ ||=|, | \==\-/\ \   /==/  ,  ,-'  
-#	\==\  \    /==/-|_\ |\==\, \/=/. /  /==/-|_\ |  |==| ,|/=| _| /==/-|_\ |  |==|-   |  .  
-# 	\==\ -\   \==\,   - \\==\  \/ -/   \==\,   - \ |==|- `-' _ | \==\,   - \ |==|_   `-' \ 
-#	 _\==\ ,\  /==/ -   ,| |==|  ,_/    /==/ -   ,| |==|  _     | /==/ -   ,| |==|   _  , | 
-#	/==/\/ _ |/==/-  /\ - \\==\-, /    /==/-  /\ - \|==|   .-. ,\/==/-  /\ - \\==\.       / 
-#	\==\ - , /\==\ _.\=\.-'/==/._/     \==\ _.\=\.-'/==/, //=/  |\==\ _.\=\.-' `-.`.___.-'  
-# 	`--`---'  `--`        `--`-`       `--`        `--`-' `-`--` `--`                      
+	   ,-,--.    ,---.                    ,---.      ,--.-,,-,--,   ,---.        _,.----.   
+ 	,-.'-  _\ .--.'  \   ,--.-.  .-,--..--.'  \    /==/  /|=|  | .--.'  \     .' .' -   \  
+	/==/_ ,_.' \==\-/\ \ /==/- / /=/_ / \==\-/\ \   |==|_ ||=|, | \==\-/\ \   /==/  ,  ,-'  
+	\==\  \    /==/-|_\ |\==\, \/=/. /  /==/-|_\ |  |==| ,|/=| _| /==/-|_\ |  |==|-   |  .  
+ 	\==\ -\   \==\,   - \\==\  \/ -/   \==\,   - \ |==|- `-' _ | \==\,   - \ |==|_   `-' \ 
+	 _\==\ ,\  /==/ -   ,| |==|  ,_/    /==/ -   ,| |==|  _     | /==/ -   ,| |==|   _  , | 
+ 	/==/\/ _ |/==/-  /\ - \\==\-, /    /==/-  /\ - \|==|   .-. ,\/==/-  /\ - \\==\.       / 
+	\==\ - , /\==\ _.\=\.-'/==/._/     \==\ _.\=\.-'/==/, //=/  |\==\ _.\=\.-' `-.`.___.-'  
+	`--`---'  `--`        `--`-`       `--`        `--`-' `-`--` `--`                      
 
 I shall not use sayahac to:
+
 (i) upload or otherwise transmit, display or distribute any
 content that infringes any trademark, trade secret, copyright
 or other proprietary or intellectual property rights of any
-person; (ii) upload or otherwise transmit any material that contains
+person.
+
+(ii) upload or otherwise transmit any material that contains
 software viruses or any other computer code, files or programs
 designed to interrupt, destroy or limit the functionality of any
-computer software or hardware or telecommunications equipment;
+computer software or hardware or telecommunications equipment.
 ''' + color.END
 
 mrrobot4 = color.NOTICE + '''
 Hello,
         Welcome to sayahac framework
 
-
-Thanks you,
 '''
 
 '''
