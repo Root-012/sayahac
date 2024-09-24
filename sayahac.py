@@ -146,7 +146,9 @@ class sayahac:
         print (sayahac + color.RED + '''
        }--------------{+} Coded By Root-012 {+}--------------{
        }--------{+}  GitHub.com/Root-012/sayahac {+}--------{
-    ''' + color.END + '''
+    ''' + color.END + 
+    
+    '''
        {1}--Information Gathering
        {2}--Password Attacks
        {3}--Wireless Testing
@@ -173,9 +175,7 @@ class sayahac:
         elif choice == "6":
             webHackingMenu()
         elif choice == "7":
-            postExploitationMenu()
-        elif choice == "8":
-            Private-WebHackingMenu() 
+            postExploitationMenu() 
         elif choice == "0":
             self.update()
         elif choice == "99":
