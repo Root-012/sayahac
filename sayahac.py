@@ -90,7 +90,7 @@ logDir = installDir + config.get('sayahac', 'logDir')
 yes = config.get('sayahac', 'yes').split()
 color_random=[color.HEADER,color.IMPORTANT,color.NOTICE,color.OKBLUE,color.OKGREEN,color.WARNING,color.RED,color.END,color.UNDERLINE,color.LOGGING]
 random.shuffle(color_random) 
-sayahac = color_random[0] + '''
+sayahaclogo = color_random[0] + '''
   
    _     _      _     _      _     _      _     _      _     _      _     _      _     _   
   (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)  
@@ -143,7 +143,7 @@ class sayahac:
     def __init__(self):
         clearScr()
         self.createFolders()
-        print ( sayahac + color.RED + '''
+        print (sayahaclogo + color.RED + '''
        }--------------{+} Coded By Root-012 {+}--------------{
        }--------{+}  GitHub.com/Root-012/sayahac {+}--------{
     ''' + color.END + 
