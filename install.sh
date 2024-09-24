@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bash Script for install Fsociety tools
+# Bash Script for install sayahac tools
 # Must run to install tool
 
 clear
