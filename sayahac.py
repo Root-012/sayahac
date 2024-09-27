@@ -188,7 +188,7 @@ class sayahac:
         elif choice == "6":
             webHackingMenu()
         elif choice == "7":
-            postExploitationMenu() 
+            postExploitationMenu()
         elif choice == "0":
             self.update()
         elif choice == "99":
@@ -251,49 +251,209 @@ class sniffingSpoofingMenu:
         if choice6 == "1":
             setoolkit()
         elif choice6 == "2":
-            ssls()
+            sslstrip()
         elif choice6 == "3":
-            pisher()
+            PacketSniffingTool()
         elif choice6 == "4":
-            smtpsend()
+            PacketSpy()
         elif choice6 == "99":
             sayahac()
         else:
             self.__init__()
         self.completed()
 
-class ssls:
+class sslstrip:
+    sslstripLogo = '''
+    _______ _______ _        _        _  _______  ______
+    (  ____ (  ___  | \    /\( (    /| )/ ___   )(  __  )
+    | (    )| (   ) |  \  / /|  \  ( | |\/   )  || (  ) |
+    | (____)| |   | |  (_/ / |   \ | |    /   ) | | /   |
+    (_____  | |   | |   _ (  | (\ \) |   /   /  | (/ /) |
+          ) | |   | |  ( \ \ | | \   |  /   /   |   / | |
+    /\____) | (___) |  /  \ \| )  \  | /   (_/   |  (__) |
+    \_______(_______|_/    \/|/    )_)(____(____/(_______)
     
-    def ssls():
-        print('''sslstrip is a MITM tool that implements Moxie Marlinspike's SSL stripping
-        attacks.
-        It requires Python 2.5 or newer, along with the 'twisted' python module.''')
-        if yesOrNo():
-            os.system("git clone --depth=1 https://github.com/moxie0/sslstrip.git")
-            os.system("apt-get install python-twisted-web")
-            os.system("python sslstrip/setup.py")
+    '''
+
+    def __init__(self):
+        self.installDir = toolDir + "sslstrip"
+        self.gitRepo = "https://github.com/moxie0/sslstrip.git"
+
+        if not self.installed():
+            self.install()
+            self.run()
         else:
-            sniffingSpoofingMenu.completed("SSlStrip")
+            self.run()
 
+    def installed(self):
+        return (os.path.isfile("/usr/bin/sslstrip") or os.path.isfile("/usr/local/bin/sslstrip"))
 
-class pisher:
-    
-    def pisher():
-        os.system("wget http://pastebin.com/raw/DDVqWp4Z --output-document=pisher.py")
+    def install(self):
+        os.system("git clone --depth=1 %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && python setup.py install" % self.installDir)
+
+    def run(self):
         clearScr()
-        os.system("python pisher.py")
+        print(self.sslstripLogo)
+        interface = raw_input("   Enter the network interface (e.g., eth0, wlan0): ")
+        self.menu(interface)
 
-
-class smtpsend:
-    
-    def completed(self):
-        raw_input("Completed, click return to go back")
-        self.__init__()
-
-    def smtpsend():
-        os.system("wget http://pastebin.com/raw/Nz1GzWDS --output-document=smtp.py")
+    def menu(self, interface):
         clearScr()
-        os.system("python smtp.py")
+        print(self.sslstripLogo)
+        print("   SSLStrip tool on interface: %s\n" % interface)
+        print("   {1}--Start SSLStrip")
+        print("   {2}--View Logs\n")
+        print("   {99}-Return to information gathering menu \n")
+        response = raw_input("sslstrip ~# ")
+        clearScr()
+        logPath = "logs/sslstrip-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+        try:
+            if response == "1":
+                print("   Starting SSLStrip...")
+                os.system("iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000")
+                os.system("sslstrip -l 10000 -w %s" % logPath)
+                raw_input(continuePrompt)
+            elif response == "2":
+                os.system("cat %s" % logPath)
+                raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(interface)
+        except KeyboardInterrupt:
+            os.system("iptables -t nat -F")
+            self.menu(interface)
+
+
+
+class PacketSniffingTool:
+    packetSniffingLogo = '''
+     ____            _        _     _____        _  __  _____ _       _  __
+    |  _ \ ___  _ __(_) ___  | |_  |_   _|_ _   | |/ / |  ___(_)_ __ (_)/ _|
+    | |_) / _ \| '__| |/ _ \ | __|   | |/ _` |  | ' /  | |_  | | '_ \| | |_
+    |  __/ (_) | |  | |  __/ | |_    | | (_| |  | . \  |  _| | | | | | |  _|
+    |_|   \___/|_|  |_|\___|  \__|   |_|\__,_|  |_|\_\ |_|   |_|_| |_|_|_|
+    '''
+
+    def __init__(self):
+        self.installDir = toolDir + "PacketSniffingTool"
+        self.gitRepo = "git@github.com:SHAHKRISHS/Packet-Sniffing-Tool.git"
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        """Check if the Packet Sniffing Tool is already installed."""
+        return os.path.isdir(self.installDir)
+
+    def install(self):
+        """Clone and install the Packet Sniffing Tool."""
+        print("Installing Packet Sniffing Tool...")
+        os.system("git clone %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && make install" % self.installDir)  # Assuming it uses make for installation
+
+    def run(self):
+        """Run the Packet Sniffing Tool."""
+        clearScr()
+        print(self.packetSniffingLogo)
+        interface = raw_input("   Enter the network interface (e.g., eth0, wlan0): ")
+        self.menu(interface)
+
+    def menu(self, interface):
+        """Display menu options for the Packet Sniffing Tool."""
+        clearScr()
+        print(self.packetSniffingLogo)
+        print("   Packet Sniffing Tool on interface: %s\n" % interface)
+        print("   {1}--Start Sniffing")
+        print("   {2}--View Logs\n")
+        print("   {99}-Return to main menu \n")
+        response = raw_input("packet_sniff ~# ")
+        clearScr()
+        logPath = "logs/packet_sniff-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+        try:
+            if response == "1":
+                print("   Starting packet sniffing...")
+                os.system("sudo python %s/sniff.py -i %s -o %s" % (self.installDir, interface, logPath))  # Replace with the actual command
+                raw_input(continuePrompt)
+            elif response == "2":
+                os.system("cat %s" % logPath)
+                raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(interface)
+        except KeyboardInterrupt:
+            self.menu(interface)
+
+
+class PacketSpy:
+    packetSpyLogo = '''
+    ____            _        _     _____                     _____             
+   |  _ \ ___  _ __(_) ___  | |_  |_   _|_ _ _ __ _ __ ___   |  ___|   _  _ __  
+   | |_) / _ \| '__| |/ _ \ | __|   | |/ _` | '__| '_ ` _ \  | |_ | | | || '_ \ 
+   |  __/ (_) | |  | |  __/ | |_    | | (_| | |  | | | | | | |  _|| |_| || |_) |
+   |_|   \___/|_|  |_|\___|  \__|   |_|\__,_|_|  |_| |_| |_| |_|   \__,_|| .__/ 
+                                                                        |_|    
+
+    '''
+
+    def __init__(self):
+        self.installDir = toolDir + "PacketSpy"
+        self.gitRepo = "git@github.com:HalilDeniz/PacketSpy.git"
+
+        if not self.installed():
+            self.install()
+            self.run()
+        else:
+            self.run()
+
+    def installed(self):
+        """Check if PacketSpy is already installed."""
+        return os.path.isdir(self.installDir)
+
+    def install(self):
+        """Clone and install the PacketSpy tool."""
+        print("Installing PacketSpy...")
+        os.system("git clone %s %s" % (self.gitRepo, self.installDir))
+        os.system("cd %s && pip install -r requirements.txt" % self.installDir)  # Assuming it uses pip to install dependencies
+
+    def run(self):
+        """Run the PacketSpy tool."""
+        clearScr()
+        print(self.packetSpyLogo)
+        interface = raw_input("   Enter the network interface (e.g., eth0, wlan0): ")
+        self.menu(interface)
+
+    def menu(self, interface):
+        """Display menu options for the PacketSpy tool."""
+        clearScr()
+        print(self.packetSpyLogo)
+        print("   PacketSpy running on interface: %s\n" % interface)
+        print("   {1}--Start Packet Sniffing")
+        print("   {2}--View Captured Data")
+        print("   {99}-Return to information gathering menu \n")
+        response = raw_input("packetspy ~# ")
+        clearScr()
+        logPath = "logs/packetspy-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".pcap"
+        try:
+            if response == "1":
+                print("   Starting packet sniffing with PacketSpy...")
+                os.system("sudo python %s/PacketSpy.py -i %s -o %s" % (self.installDir, interface, logPath))  # Command to run PacketSpy
+                raw_input(continuePrompt)
+            elif response == "2":
+                os.system("tcpdump -r %s" % logPath)  # Command to read the captured data from pcap file
+                raw_input(continuePrompt)
+            elif response == "99":
+                pass
+            else:
+                self.menu(interface)
+        except KeyboardInterrupt:
+            self.menu(interface)
+
 
 
 
@@ -563,7 +723,7 @@ class NiktoTool:
         print("   {2}--Scan with Tuning Options")
         print("   {3}--Scan for Specific Vulnerabilities")
         print("   {4}--Scan with Output to Report File")
-        print("   {99}-Return to previous menu \n")
+        print("   {99}-Return to previous menu \n") 
         response = raw_input("nikto ~# ")
         clearScr()
         logPath = "logs/nikto-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".txt"
