@@ -50,6 +50,11 @@ from xml.dom import minidom
 from urlparse import urlparse
 from optparse import OptionParser
 from time import gmtime, strftime, sleep
+import os
+import time
+import requests
+import json
+from time import strftime, gmtime
 
 '''
 Common Functions
@@ -521,7 +526,7 @@ wwwwwww           wwwww           wwwwwww eeeeeeeeeeee    b:::::bbbbbbbbb
         elif choiceweb == "6":
             WPExploitTool()
         elif choiceweb == "7":
-            wppluginscan()
+            Nessus()
         elif choiceweb == "8":
             shelltarget()
         elif choiceweb == "9":
@@ -977,41 +982,158 @@ continuePrompt = "Press Enter to continue..."
 
 
 
+class Nessus:
+    nessusLogo = '''
+    _   _                        
+   | \ | |                       
+   |  \| | ___  __ _  __ _ _   _ 
+   | . ` |/ _ \/ _` |/ _` | | | |
+   | |\  |  __/ (_| | (_| | |_| |
+   \_| \_/\___|\__, |\__,_|\__, |
+                __/ |       __/ |
+               |___/       |___/ 
+    '''
 
-class wppluginscan:
+    def __init__(self):
+        self.installDir = toolDir + "Nessus"
+        self.nessusUrl = "http://localhost:8834"  # Assuming Nessus is hosted locally
+        self.username = "admin"                   # Replace with your Nessus username
+        self.password = "password"                # Replace with your Nessus password
+        self.access_token = None                  # To store session token
+        
+        if not self.installed():
+            self.install()
+            self.authenticate()
+            self.run()
+        else:
+            self.authenticate()
+            self.run()
 
-    def wppluginscan():
-        Notfound = [404, 401, 400, 403, 406, 301]
-        sitesfile = raw_input("sites file: ")
-        filepath = raw_input("Plugins File: ")
+    def installed(self):
+        """Check if Nessus is installed by looking for Nessus daemon."""
+        return os.path.isfile("/opt/nessus/sbin/nessusd")
 
-    def scan(site, dir):
-        global resp
-        try:
-            conn = httplib.HTTPConnection(site)
-            conn.request('HEAD', "/wp-content/plugins/" + dir)
-            resp = conn.getresponse().status
-        except Exception as message:
-            print("Cant Connect:" + message) 
+    def install(self):
+        """Download and install Nessus from its official website."""
+        print("Installing Nessus...")
+        os.system("wget https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/nessus-8.15.2-ubuntu1110_amd64.deb")
+        os.system("sudo dpkg -i nessus-8.15.2-ubuntu1110_amd64.deb")
+        os.system("sudo /opt/nessus/sbin/nessusd &")  # Start Nessus daemon
+        print("Nessus is installed and the service is started.")
+        time.sleep(10)  # Give some time for the Nessus service to initialize
+
+    def authenticate(self):
+        """Authenticate with Nessus API to obtain session token."""
+        print("Authenticating with Nessus...")
+        headers = {"Content-Type": "application/json"}
+        data = {
+            "username": self.username,
+            "password": self.password
+        }
+        response = requests.post(self.nessusUrl + "/session", headers=headers, data=json.dumps(data))
+        if response.status_code == 200:
+            self.access_token = response.json()["token"]
+            print("Authentication successful!")
+        else:
+            print("Authentication failed: ", response.text)
+
+    def run(self):
+        """Run the Nessus tool."""
+        clearScr()
+        print(self.nessusLogo)
+        print("   Nessus is ready to use.")
+        print("   {1}--Start New Scan")
+        print("   {2}--Monitor Ongoing Scan")
+        print("   {3}--Fetch Scan Results\n")
+        print("   {99}-Return to information gathering menu\n")
+        response = raw_input("nessus ~# ")
+        clearScr()
+
+        if response == "1":
+            self.start_scan()
+        elif response == "2":
+            self.monitor_scan()
+        elif response == "3":
+            self.fetch_results()
+        elif response == "99":
             pass
+        else:
+            self.run()
 
-    def timer():
-        now = time.localtime(time.time())
-        return time.asctime(now)
+    def start_scan(self):
+        """Start a new Nessus scan."""
+        print("Starting a new Nessus scan...")
+        scan_name = raw_input("   Enter scan name: ")
+        target = raw_input("   Enter target IP/Range/Hostname: ")
 
-    def main():
-        sites = open(sitesfile).readlines()
-        plugins = open(filepath).readlines()
-        for site in sites:
-            site = site.rstrip()
-        for plugin in plugins:
-            plugin = plugin.rstrip()
-            scan(site, plugin)
-            if resp not in Notfound:
-                print("+----------------------------------------+")
-                print("| current site:" + site)
-                print("| Found Plugin: " + plugin)
-                print("| Result:", resp)
+        headers = {"X-Cookie": "token=" + self.access_token, "Content-Type": "application/json"}
+        scan_data = {
+            "uuid": self.get_policy_uuid(),  # Assuming a default scan policy exists
+            "settings": {
+                "name": scan_name,
+                "enabled": True,
+                "text_targets": target
+            }
+        }
+        response = requests.post(self.nessusUrl + "/scans", headers=headers, data=json.dumps(scan_data))
+        if response.status_code == 200:
+            print("Scan started successfully.")
+        else:
+            print("Error starting scan: ", response.text)
+
+    def monitor_scan(self):
+        """Monitor an ongoing scan."""
+        scan_id = raw_input("   Enter scan ID to monitor: ")
+        headers = {"X-Cookie": "token=" + self.access_token}
+
+        while True:
+            response = requests.get(self.nessusUrl + "/scans/" + scan_id, headers=headers)
+            if response.status_code == 200:
+                scan_data = response.json()
+                scan_status = scan_data["info"]["status"]
+                progress = scan_data["info"]["progress"]
+
+                print("   Scan Status: %s, Progress: %s%%" % (scan_status, progress))
+                if scan_status == "completed":
+                    print("   Scan completed!")
+                    break
+                time.sleep(10)
+            else:
+                print("Error fetching scan status: ", response.text)
+                break
+
+    def fetch_results(self):
+        """Fetch the results of a completed scan."""
+        scan_id = raw_input("   Enter scan ID to fetch results: ")
+        headers = {"X-Cookie": "token=" + self.access_token}
+        
+        response = requests.get(self.nessusUrl + "/scans/" + scan_id, headers=headers)
+        if response.status_code == 200:
+            scan_data = response.json()
+            print("   Scan Name: %s" % scan_data["info"]["name"])
+            print("   Vulnerabilities found: ")
+
+            for vuln in scan_data["vulnerabilities"]:
+                print("   - %s (Severity: %s, Count: %s)" % (
+                    vuln["plugin_name"],
+                    vuln["severity"],
+                    vuln["count"]
+                ))
+        else:
+            print("Error fetching scan results: ", response.text)
+
+    def get_policy_uuid(self):
+        """Fetch the UUID of a default scan policy (basic scan)."""
+        headers = {"X-Cookie": "token=" + self.access_token}
+        response = requests.get(self.nessusUrl + "/editor/policies", headers=headers)
+        if response.status_code == 200:
+            policies = response.json()["policies"]
+            for policy in policies:
+                if policy["name"] == "Basic Network Scan":  # Assuming basic policy exists
+                    return policy["uuid"]
+        else:
+            print("Error fetching policies: ", response.text)
+        return None
 
 
 
